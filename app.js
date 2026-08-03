@@ -205,7 +205,8 @@
   function hwlistHTML(block) {
     var ranges = [['all', '全部'], ['7', '近7天'], ['30', '近30天'], ['90', '近一季度'], ['old', '更早']];
     var levels = [['all', '全部'], ['long', '⭐ 长期关注'], ['new', '🆕 新品速览']];
-    var certs = [['all', '全部'], ['confirmed', '✅ 确定消息'], ['rumor', '🔶 传闻 rumor']];
+    var certs = [['all', '全部'], ['shipped', '✅ 已上市'], ['pipeline', '🔭 未发布（在研/爆料/传闻）'],
+                 ['announced', '📢 已官宣'], ['supply', '🏭 权威爆料'], ['rumor', '🔶 早期传闻']];
     var h = '<div class="hw-filter" id="hwFilter">';
     h += '<div class="hw-fg"><span class="hw-fl">时间</span>';
     ranges.forEach(function (r) {
@@ -217,7 +218,7 @@
       h += '<button class="hw-btn' + (l[0] === 'all' ? ' active' : '') + '" data-level="' + l[0] + '">' + l[1] + '</button>';
     });
     h += '</div>';
-    h += '<div class="hw-fg"><span class="hw-fl">确定性</span>';
+    h += '<div class="hw-fg"><span class="hw-fl">信号强度</span>';
     certs.forEach(function (c) {
       h += '<button class="hw-btn' + (c[0] === 'all' ? ' active' : '') + '" data-cert="' + c[0] + '">' + c[1] + '</button>';
     });
@@ -248,13 +249,22 @@
     (items || []).forEach(function (it) {
       var lvl = it.level === 'long' ? 'long' : 'new';
       var lvlTxt = lvl === 'long' ? '⭐ 长期关注' : '🆕 新品速览';
-      var cert = it.certainty === 'rumor' ? 'rumor' : 'confirmed';
-      var certTxt = cert === 'rumor' ? '🔶 传闻' : '✅ 确定';
+      var CERT = {
+        shipped:   ['✅ 已上市',   '已发布并可购买 / 已正式官宣落地'],
+        announced: ['📢 已官宣',   '厂商官方确认在做或已定档，但尚未上市'],
+        supply:    ['🏭 权威爆料', '来自供应链或有长期准确记录的记者/分析师（Gurman、郭明錤、The Information、AR圈等），非官方口径'],
+        rumor:     ['🔶 早期传闻', '单一或匿名来源，未获交叉验证，仅作早期信号参考']
+      };
+      var cert = it.certainty || 'shipped';
+      if (cert === 'confirmed') cert = 'shipped';
+      if (!CERT[cert]) cert = 'rumor';
+      var certTxt = CERT[cert][0], certTip = CERT[cert][1];
+      var soft = (cert !== 'shipped');
       var d = it.date || '';
-      h += '<article class="hw-item' + (it.placeholder ? ' ph' : '') + (cert === 'rumor' ? ' rumor' : '') + '" data-date="' + d + '" data-level="' + lvl + '" data-cert="' + cert + '">';
+      h += '<article class="hw-item' + (it.placeholder ? ' ph' : '') + (soft ? ' pipe c-' + cert : '') + '" data-date="' + d + '" data-level="' + lvl + '" data-cert="' + cert + '">';
       h += '<div class="hw-ihead"><span class="hw-iname">' + it.name + '</span>';
       h += '<span class="hw-badges"><span class="hw-date">' + (d || '日期待补') + '</span>' +
-        '<span class="hw-cert ' + cert + '">' + certTxt + '</span>' +
+        '<span class="hw-cert ' + cert + '" title="' + certTip + '">' + certTxt + '</span>' +
         '<span class="hw-lvl ' + lvl + '">' + lvlTxt + '</span></span></div>';
       if (it.brand) h += '<div class="hw-brand">' + it.brand + '</div>';
       h += '<div class="hw-sum">' + it.summary + (it.placeholder ? ' <span class="hw-phtag">🚧 数据待补充</span>' : '') + '</div>';
@@ -266,7 +276,9 @@
         });
         h += '</div>';
       }
-      if (it.src) h += '<div class="co-src">📄 官方原始：' + cite(it.src) + '</div>';
+      if (it.why) h += '<div class="hw-why"><b>🔬 对研究的意义</b>' + it.why + '</div>';
+      if (it.src) h += '<div class="co-src">📄 ' + (soft ? '爆料原文' : '官方原始') + '：' + cite(it.src) + '</div>';
+      if (it.src2) h += '<div class="co-src">📄 交叉来源：' + cite(it.src2) + '</div>';
       (it.insights || []).forEach(function (ins) {
         h += '<div class="insight' + (ins.type ? (' ' + ins.type) : '') + '">' + ins.html + ' ' + cite(ins.src) + '</div>';
       });
@@ -302,11 +314,13 @@
         } else if (range !== 'all' && !dd) {
           dateOK = (range === 'old');
         }
-        var certOK = (cert === 'all') || (cert === el.getAttribute('data-cert'));
+        var ec = el.getAttribute('data-cert');
+        var isPipe = (ec !== 'shipped');
+        var certOK = (cert === 'all') || (cert === 'pipeline' ? isPipe : cert === ec);
         var show;
         if (level === 'long') show = (lvl === 'long');
-        else if (level === 'new') show = (lvl === 'new') && (range === 'all' || dateOK);
-        else show = dateOK || (lvl === 'long');
+        else if (level === 'new') show = (lvl === 'new') && (range === 'all' || dateOK || isPipe);
+        else show = dateOK || (lvl === 'long') || isPipe;
         show = show && certOK;
         el.style.display = show ? '' : 'none';
       });
