@@ -273,7 +273,7 @@ var SITE = {
       { html: "<b>端侧 AI 仍是「算力到位、场景缺位」：</b>NPU 普遍 40–180 TOPS，但系统级智能体（联想 Qira、华为小艺、Apple Intelligence）才是把算力变刚需的关键，瓶颈仍在 OS 层。", src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } }
     ],
     blocks: [
-      { type: "hwlist", filterHint: "提示：选「近30天」看最新动态；选「⭐ 长期关注」看结构性重要信息（如联想 Qira、华为鸿蒙 PC+麒麟）；重要旧信息默认不被时间筛选隐藏。平板 / AI 智能硬件模块当前为框架占位（🚧），真实 2026 数据可随时补。",
+      { type: "hwlist", filterHint: "提示：选「近30天」看最新动态；选「⭐ 长期关注」看结构性重要信息（如 OpenAI io、字节豆包、阶跃 STEPX、华为鸿蒙 PC+麒麟、联想 Qira）；重要旧信息默认不被时间筛选隐藏。AI 智能硬件模块已以「大模型 / agent 厂家的 AI 原生硬件」为首要内容（真实带出处），平板模块仍为🚧占位。",
         modules: [
           { id: "pc", name: "PC / 笔记本", icon: "💻",
             items: [
@@ -367,23 +367,41 @@ var SITE = {
               { name: "荣耀平板 MagicPad 3 Pro 12.3", brand: "荣耀", date: "2026-04", level: "new", placeholder: true,
                 summary: "4/23 随 WIN 游戏本一同发布。真实参数待补充。" }
             ] },
-          { id: "aihw", name: "AI 智能硬件", icon: "🤖", note: "🚧 框架占位：以下四类为对产业有益的 AI 智能硬件结构，真实 2026 新品与来源待补充（告诉我即可填充）。",
+          { id: "aihw", name: "AI 智能硬件", icon: "🤖", note: "本模块重点在「大模型 / agent 厂家亲自下场的 AI 原生硬件」（OpenAI、字节豆包、阶跃、Meta、小米、华为、百度、阿里、科大讯飞等）——它们要把 ChatGPT / 豆包 / 智能体变成「超级入口」，重构终端而非加附件。普通配件型 AI 硬件（耳机 / 云台 / 小键盘）价值有限，已降级为次要子类（🚧 占位）。",
             subs: [
-              { cat: "智能音频（AI 耳机 / 音箱）", items: [
-                { name: "AI 耳机（字节 Ola Friend / 小米 AI 音频 / 韶音等）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "实时翻译 / 语音助手 / 降噪等 AI 功能耳机。真实 2026 新品与来源待补充。" },
-                { name: "AI 智能音箱", brand: "—", date: "2026", level: "new", placeholder: true, summary: "带端侧大模型的智能音箱。待补充。" }
+              { cat: "★ 大模型 / agent 厂家的 AI 原生硬件（重点）", items: [
+                { name: "OpenAI · io / Sweet Pea 音频设备 + 智能音箱 + 自研手机", brand: "OpenAI", date: "2026-H2", level: "long",
+                  summary: "2025/5 以 65 亿美元收购 Jony Ive 的 io；内部代号 Sweet Pea 的 AI 音频设备（耳后挂戴 / 开放式音频）2026 下半年发布、富士康代工、目标年产 4000–5000 万台；另有无屏智能音箱（2027）、Codex Micro 硬件（7/15）、自研手机计划（联发科 / 高通，2028 量产、立讯精密）。",
+                  src: { n: "腾讯新闻·OpenAI 为什么造耳机", u: "https://new.qq.com/rain/a/20260730A04QYF00?refer=cp_1009" } },
+                { name: "字节 · 豆包 Ola Friend AI 耳机 + 手机助手", brand: "字节跳动", date: "2024-12", level: "long",
+                  summary: "Ola Friend 为 OWS 开放式耳机、集成豆包智能体，支持同声传译 / 语音导航；豆包手机助手（努比亚 M153 工程机，2025/12）可系统级读取屏幕、模拟点击跨 App 自动执行任务，引发安全隐私争议后被部分 App 限制。",
+                  src: { n: "新浪·大模型公司为何造手机", u: "https://k.sina.com.cn/article_1496814565_593793e5020020q2u.html" } },
+                { name: "阶跃星辰 · STEPX Neo AI 原生手机 + Step AOS", brand: "阶跃星辰", date: "2026-07-13", level: "long",
+                  summary: "全球首款大模型原生智能体手机，搭载 Step AOS 智能体原生 OS 与 Amoo 智能体，打破记忆 / 决策 / 行动「三堵墙」，已与 WPS / 美团 / 携程 / 支付宝 / 京东 / 滴滴等达成 AI 深度合作。",
+                  src: { n: "今日头条·又一大模型公司发布 AI 原生手机", u: "https://www.toutiao.com/article/7662638090351018537" } },
+                { name: "Meta · Ray-Ban Meta 系列 AI 眼镜", brand: "Meta", date: "2026", level: "long",
+                  summary: "Ray-Ban Meta Gen2（5h 续航）、Blayzer / Scriber（处方镜片版）、Oakley Meta、Ray-Ban Meta Display（HUD $799）等，搭载 Meta AI，主打 Always-on 助手 + 第一人称拍摄。",
+                  src: { n: "Smart Glasses Daily·2026 盘点", u: "https://smartglassesdaily.com/en/whitepaper" } },
+                { name: "小米 · AI 眼镜", brand: "小米", date: "2025-06", level: "new",
+                  summary: "骁龙 AR1 + 恒玄双芯、1999 元起、1200 万主摄、超级小爱、40g / 8.6h 续航，支持同声传译与眼镜扫码支付。",
+                  src: { n: "小米官网·AI 眼镜", u: "https://www.mi.com/prod/xiaomi-ai-glasses" } },
+                { name: "华为 · AI 眼镜", brand: "华为", date: "2026-05", level: "new",
+                  summary: "35.5g 业界最轻之一、钛合金框架、盘古大模型、800 万摄像头，鸿蒙生态第一人称拍摄 + 全场景 AI 交互。",
+                  src: { n: "腾讯新闻·2026 AI 眼镜大战", u: "https://so.html5.qq.com/page/real/search_news?docid=70000021_78969ff4d9604452" } },
+                { name: "百度 · 小度 AI 眼镜 Pro", brand: "百度", date: "2026", level: "new",
+                  summary: "全球首款中文大模型原生 AI 眼镜，整合文心一言，支持实时翻译 / 智能识物 / AI 会议纪要。",
+                  src: { n: "LEDinside·谷歌三星智能眼镜", u: "https://ledinside.com.tw/node/40610.html" } },
+                { name: "阿里 · 夸克千问 AI 眼镜（S1 / G1）", brand: "阿里", date: "2026", level: "new",
+                  summary: "深度整合 Qwen 大模型与淘宝 / 支付宝 / 高德等阿里生态，语音即可调用 AI 助理。",
+                  src: { n: "今日头条·又一大模型公司发布 AI 原生手机", u: "https://www.toutiao.com/article/7662638090351018537" } },
+                { name: "科大讯飞 · AI 眼镜", brand: "科大讯飞", date: "2026", level: "new",
+                  summary: "MWC 发布，40g 最轻双目单色显示多模态眼镜，122 语言全场景翻译，首创唇动识别降噪。",
+                  src: { n: "腾讯新闻·2026 AI 眼镜盘点", u: "https://so.html5.qq.com/page/real/search_news?docid=70000021_82269fc4f9261352" } }
               ] },
-              { cat: "AI 拍摄配件（云台 / 相机）", items: [
-                { name: "AI 云台（大疆 / 影石 / 智云等）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "自动跟拍 / AI 构图 / 手势控制的智能云台与运动相机。待补充。" },
-                { name: "AI 摄像头 / 会议相机", brand: "—", date: "2026", level: "new", placeholder: true, summary: "AI 追踪 / 美颜 / 自动取景的摄像头。待补充。" }
-              ] },
-              { cat: "AI 输入设备（键盘 / 鼠标）", items: [
-                { name: "AI 键盘（科大讯飞 / 双飞燕等）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "带语音转写 / AI 写作助手的智能键盘。待补充。" },
-                { name: "AI 鼠标 / 手写板", brand: "—", date: "2026", level: "new", placeholder: true, summary: "AI 语音鼠标 / 智能手写板。待补充。" }
-              ] },
-              { cat: "AI 穿戴与其他（眼镜 / 家居）", items: [
-                { name: "AI 眼镜（小米 AI 眼镜 / Meta Ray-Ban / 闪极拍拍镜）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "拍照 / 实时翻译 / 语音助手的 AI 眼镜。待补充。" },
-                { name: "AI 手表 / AI 家居", brand: "—", date: "2026", level: "new", placeholder: true, summary: "健康 AI 手表、带端侧模型的智能家居中枢。待补充。" }
+              { cat: "配件型 AI 硬件（耳机 / 云台 / 小键盘等，次要）", items: [
+                { name: "AI 耳机（非大模型厂：韶音等）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "实时翻译 / 语音助手 / 降噪耳机（非大模型厂牌）。真实 2026 新品与来源待补充。" },
+                { name: "AI 云台 / 运动相机（大疆 / 影石 / 智云）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "自动跟拍 / AI 构图 / 手势控制的智能云台与运动相机。待补充。" },
+                { name: "AI 键盘 / 鼠标（讯飞 / 双飞燕）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "语音转写 / AI 写作助手的智能输入设备。待补充。" }
               ] }
             ] }
         ]
@@ -406,7 +424,11 @@ var SITE = {
       { type: "", html: "<b>洞察 2 · 自研芯片回归：</b>华为麒麟 X 系、苹果 M5 代表「整机厂自研 SoC」路线，强化软硬一体与生态壁垒；联想/小米仍依赖 Intel/AMD，差异化靠设计与生态。", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260729A04C9A00?refer=cp_1009" } },
       { type: "", html: "<b>洞察 3 · 游戏本性能释放内卷：</b>荣耀 270W、雷神 160W 双满功耗、机械革命双烤 170W——散热结构（轴流风扇 / 碳纤维 / 镁合金）成为差异化核心，单纯堆功耗已不够。", src: { n: "荣耀官网", u: "https://www.honor.com/cn/news/honor-win-h9-h7-launch" } },
       { type: "", html: "<b>洞察 4 · 国产工艺上探：</b>镁合金（机械革命/荣耀）、碳纤维（雷神）、云晰柔光屏（华为）等工艺追平国际大厂，价格带更具侵略性，高端市场不再由国际品牌独占。", src: { n: "游民星空", u: "https://wap.gamersky.com/news/Content-2172646.html" } },
-      { type: "", html: "<b>洞察 5 · 端侧 AI 仍是「算力到位、场景缺位」：</b>NPU 普遍 40–180 TOPS，但系统级智能体（联想 Qira、华为小艺、Apple Intelligence）才是把算力变刚需的关键，OS 层调度框架仍是行业瓶颈。", src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } }
+      { type: "", html: "<b>洞察 5 · 端侧 AI 仍是「算力到位、场景缺位」：</b>NPU 普遍 40–180 TOPS，但系统级智能体（联想 Qira、华为小艺、Apple Intelligence）才是把算力变刚需的关键，OS 层调度框架仍是行业瓶颈。", src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } },
+      { type: "good", html: "<b>洞察 6 · 产业重心在「大模型 / agent 厂家的 AI 原生硬件」：</b>普通配件型 AI 硬件（耳机 / 云台 / 小键盘）只是给已有功能加语音，价值有限；真正紧要的是 OpenAI（io/Sweet Pea）、字节（Ola Friend + 豆包手机）、阶跃（STEPX Neo AI 原生手机）、Meta（Ray-Ban）等大模型与 agent 厂亲自下场定义硬件——它们要的是把 ChatGPT / 豆包 / 智能体变成「超级入口」，重构终端而非加附件，所以本模块把它们放在首位。", src: { n: "新浪·大模型公司为何造手机", u: "https://k.sina.com.cn/article_1496814565_593793e5020020q2u.html" } },
+      { type: "", html: "<b>洞察 6 论据 1（入口卡位）：</b>手机 / 可穿戴是用户数据（位置、日程、通讯录、支付）最密集的终端，谁占入口谁就掌握 AI 时代最大的流量分发与生态构建权；大模型厂做硬件是抢「超级入口」，而非靠卖硬件赚钱——OpenAI 更长期的计划是「取代智能手机的移动 AI 设备」。", src: { n: "新浪·大模型公司为何造手机", u: "https://k.sina.com.cn/article_1496814565_593793e5020020q2u.html" } },
+      { type: "", html: "<b>洞察 6 论据 2（全栈重定义）：</b>配件型设备只能在现有 OS 上做加法；而 AI 原生终端（如阶跃 Step AOS）从模型矩阵、资源调度、统一语义数据层到 NUI 意图驱动交互全栈重构，打破「记忆 / 决策 / 行动」三堵墙，这是单款 AI 耳机或云台做不到的。", src: { n: "今日头条·又一大模型公司发布 AI 原生手机", u: "https://www.toutiao.com/article/7662638090351018537" } },
+      { type: "warn", html: "<b>洞察 6 论据 3（前车之鉴）：</b>Humane AI Pin（699 美元，交互反人类、续航崩盘，最终被惠普收购）、Rabbit R1（响应延迟、与手机 App 高度重叠）证明：单靠一个新形态配件无法创造交互习惯，必须由模型厂主导软硬一体，且要绕过「权限 / 数据孤岛」才能真正落地。", src: { n: "腾讯新闻·OpenAI 为什么造耳机", u: "https://new.qq.com/rain/a/20260730A04QYF00?refer=cp_1009" } }
     ],
     sources: [
       { n: "Apple 新闻稿（MacBook Air M5）", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" },
