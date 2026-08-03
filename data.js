@@ -273,7 +273,7 @@ var SITE = {
       { html: "<b>端侧 AI 仍是「算力到位、场景缺位」：</b>NPU 普遍 40–180 TOPS，但系统级智能体（联想 Qira、华为小艺、Apple Intelligence）才是把算力变刚需的关键，瓶颈仍在 OS 层。", src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } }
     ],
     blocks: [
-      { type: "hwlist", filterHint: "提示：选「近30天」看最新动态；选「⭐ 长期关注」看结构性重要信息（如 OpenAI io、字节豆包、阶跃 STEPX、华为鸿蒙 PC+麒麟、联想 Qira）；重要旧信息默认不被时间筛选隐藏。AI 智能硬件模块已以「大模型 / agent 厂家的 AI 原生硬件」为首要内容（真实带出处），平板模块仍为🚧占位。",
+      { type: "hwlist", filterHint: "提示：① 选「近30天」看最新动态；选「⭐ 长期关注」看结构性重要信息（如 OpenAI io/Codex、Anthropic Desktop Buddy、字节豆包、阶跃 STEPX、华为鸿蒙 PC+麒麟、联想 Qira），重要旧信息默认不被时间筛选隐藏。② 新增「确定性」筛选：默认显示全部；选「🔶 传闻 rumor」可单独看未确认的爆料（如 OpenAI Sweetpea 耳机），避免错过早期信号；选「✅ 确定消息」只看已确认项。传闻均标注来源且未获官方确认，请谨慎对待。平板模块仍为🚧占位。",
         modules: [
           { id: "pc", name: "PC / 笔记本", icon: "💻",
             items: [
@@ -373,6 +373,23 @@ var SITE = {
                 { name: "OpenAI · io / Sweet Pea 音频设备 + 智能音箱 + 自研手机", brand: "OpenAI", date: "2026-H2", level: "long",
                   summary: "2025/5 以 65 亿美元收购 Jony Ive 的 io；内部代号 Sweet Pea 的 AI 音频设备（耳后挂戴 / 开放式音频）2026 下半年发布、富士康代工、目标年产 4000–5000 万台；另有无屏智能音箱（2027）、Codex Micro 硬件（7/15）、自研手机计划（联发科 / 高通，2028 量产、立讯精密）。",
                   src: { n: "腾讯新闻·OpenAI 为什么造耳机", u: "https://new.qq.com/rain/a/20260730A04QYF00?refer=cp_1009" } },
+                { name: "OpenAI · Codex Micro 编程键盘（首款 AI 硬件）", brand: "OpenAI", date: "2026-07-15", level: "new", certainty: "confirmed",
+                  summary: "OpenAI 与外设厂 Work Louder 联合推出的首款实体硬件，定位「智能体工作指挥中心」：13 枚机械键、旋钮调推理级别、摇杆触发工作流、RGB 实时显示 agent 状态（思考 / 运行 / 等待 / 完成）。售价 230 美元，7/24 发货。",
+                  metrics: [
+                    { k: "售价", v: "$230", d: "约合人民币 1556 元，现已开启预购", src: { n: "搜狐·Codex 首款硬件", u: "https://www.sohu.com/a/1050907374_121119002" } },
+                    { k: "形态", v: "13 键 + 旋钮 + 摇杆", d: "为 Codex 配的「遥控器」，瞄灯即知哪个 agent 在跑", src: { n: "至顶科技·Codex Micro", u: "http://view.inews.qq.com/a/20260723A0866G00" } },
+                    { k: "发货", v: "2026-07-24", d: "预计 7 月下旬发货", src: { n: "IT之家·OpenAI 首款硬件", u: "https://view.inews.qq.com/a/20260717A0242N00" } }
+                  ],
+                  src: { n: "至顶科技·Codex Micro 键盘", u: "http://view.inews.qq.com/a/20260723A0866G00" } },
+                { name: "Anthropic · Claude Desktop Buddy + 官方推荐 Cardputer", brand: "Anthropic", date: "2026-05-23", level: "long", certainty: "confirmed",
+                  summary: "Anthropic 推出开源项目 Claude Desktop Buddy（显示状态、提醒授权、响应操作、桌面宠物），并指定中国 M5Stack 的 M5StickC Plus / Cardputer 为官方参考硬件，让 Claude 能直接操控物理设备——这是 Anthropic 明确的「AI Agent + 实体硬件」硬件战略。（注：Anthropic 目前没有自研键盘/耳机；市面「ClaudeCode 小键盘」为第三方集成 Claude 的产品，非官方。）",
+                  src: { n: "腾讯新闻·Claude 官方推荐 Cardputer", u: "https://news.qq.com/rain/a/20260523A09SXA00" } },
+                { name: "OpenAI · Sweetpea AI 耳机（传闻 / 未确认）", brand: "OpenAI", date: "2026-09(传闻)", level: "long", certainty: "rumor",
+                  summary: "据微博博主 Smart Pikachu 等多方爆料：Jony Ive 团队优先级最高的 io 设备。耳后挂戴「蛋石」形态、2nm Exynos 芯片、深度集成 ChatGPT、可脱离手机操控 Siri，传闻 9 月发布、首年目标 4000–5000 万台。🔶 目前均为泄漏 / 传闻，未获 OpenAI 官方确认。",
+                  src: { n: "Cult of Mac·Sweetpea 传闻", u: "https://www.cultofmac.com/news/openais-first-device-might-take-on-airpods" } },
+                { name: "Anthropic · AI 耳机（截至 2026-08 无可靠传闻 · 见澄清）", brand: "Anthropic", date: "—", level: "long", certainty: "rumor",
+                  summary: "公开渠道截至 2026-08 没有 Anthropic 自研耳机的可靠传闻。你提到的「Anthropic 耳机」很可能是指 OpenAI 的 Sweetpea（见上条传闻）；Anthropic 当前硬件动作集中在 Claude Desktop Buddy + 官方推荐第三方硬件（Cardputer），而非自研可穿戴。",
+                  src: { n: "综合核查·无 Anthropic 耳机传闻", u: "https://news.qq.com/rain/a/20260523A09SXA00" } },
                 { name: "字节 · 豆包 Ola Friend AI 耳机 + 手机助手", brand: "字节跳动", date: "2024-12", level: "long",
                   summary: "Ola Friend 为 OWS 开放式耳机、集成豆包智能体，支持同声传译 / 语音导航；豆包手机助手（努比亚 M153 工程机，2025/12）可系统级读取屏幕、模拟点击跨 App 自动执行任务，引发安全隐私争议后被部分 App 限制。",
                   src: { n: "新浪·大模型公司为何造手机", u: "https://k.sina.com.cn/article_1496814565_593793e5020020q2u.html" } },
@@ -428,7 +445,8 @@ var SITE = {
       { type: "good", html: "<b>洞察 6 · 产业重心在「大模型 / agent 厂家的 AI 原生硬件」：</b>普通配件型 AI 硬件（耳机 / 云台 / 小键盘）只是给已有功能加语音，价值有限；真正紧要的是 OpenAI（io/Sweet Pea）、字节（Ola Friend + 豆包手机）、阶跃（STEPX Neo AI 原生手机）、Meta（Ray-Ban）等大模型与 agent 厂亲自下场定义硬件——它们要的是把 ChatGPT / 豆包 / 智能体变成「超级入口」，重构终端而非加附件，所以本模块把它们放在首位。", src: { n: "新浪·大模型公司为何造手机", u: "https://k.sina.com.cn/article_1496814565_593793e5020020q2u.html" } },
       { type: "", html: "<b>洞察 6 论据 1（入口卡位）：</b>手机 / 可穿戴是用户数据（位置、日程、通讯录、支付）最密集的终端，谁占入口谁就掌握 AI 时代最大的流量分发与生态构建权；大模型厂做硬件是抢「超级入口」，而非靠卖硬件赚钱——OpenAI 更长期的计划是「取代智能手机的移动 AI 设备」。", src: { n: "新浪·大模型公司为何造手机", u: "https://k.sina.com.cn/article_1496814565_593793e5020020q2u.html" } },
       { type: "", html: "<b>洞察 6 论据 2（全栈重定义）：</b>配件型设备只能在现有 OS 上做加法；而 AI 原生终端（如阶跃 Step AOS）从模型矩阵、资源调度、统一语义数据层到 NUI 意图驱动交互全栈重构，打破「记忆 / 决策 / 行动」三堵墙，这是单款 AI 耳机或云台做不到的。", src: { n: "今日头条·又一大模型公司发布 AI 原生手机", u: "https://www.toutiao.com/article/7662638090351018537" } },
-      { type: "warn", html: "<b>洞察 6 论据 3（前车之鉴）：</b>Humane AI Pin（699 美元，交互反人类、续航崩盘，最终被惠普收购）、Rabbit R1（响应延迟、与手机 App 高度重叠）证明：单靠一个新形态配件无法创造交互习惯，必须由模型厂主导软硬一体，且要绕过「权限 / 数据孤岛」才能真正落地。", src: { n: "腾讯新闻·OpenAI 为什么造耳机", u: "https://new.qq.com/rain/a/20260730A04QYF00?refer=cp_1009" } }
+      { type: "warn", html: "<b>洞察 6 论据 3（前车之鉴）：</b>Humane AI Pin（699 美元，交互反人类、续航崩盘，最终被惠普收购）、Rabbit R1（响应延迟、与手机 App 高度重叠）证明：单靠一个新形态配件无法创造交互习惯，必须由模型厂主导软硬一体，且要绕过「权限 / 数据孤岛」才能真正落地。", src: { n: "腾讯新闻·OpenAI 为什么造耳机", u: "https://new.qq.com/rain/a/20260730A04QYF00?refer=cp_1009" } },
+      { type: "warn", html: "<b>洞察 7 · 传闻（rumor）是早期信号，单独跟踪不漏看：</b>确定消息（✅）往往已晚于产业真实动作 1–2 个季度；而传闻（🔶）阶段（如 OpenAI Sweetpea 耳机、各厂自研芯片 / 操作系统路线）才是看清下一波硬件方向的最佳窗口。本页已加「确定性」筛选，建议默认看全部、每周扫一遍 rumor 档，把高置信传闻纳入长期关注清单，等官宣后再转为确定消息——既不漏早期信号，也不把未经证实的爆料当结论。", src: { n: "Cult of Mac·Sweetpea 传闻", u: "https://www.cultofmac.com/news/openais-first-device-might-take-on-airpods" } },
     ],
     sources: [
       { n: "Apple 新闻稿（MacBook Air M5）", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" },

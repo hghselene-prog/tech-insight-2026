@@ -205,6 +205,7 @@
   function hwlistHTML(block) {
     var ranges = [['all', '全部'], ['7', '近7天'], ['30', '近30天'], ['90', '近一季度'], ['old', '更早']];
     var levels = [['all', '全部'], ['long', '⭐ 长期关注'], ['new', '🆕 新品速览']];
+    var certs = [['all', '全部'], ['confirmed', '✅ 确定消息'], ['rumor', '🔶 传闻 rumor']];
     var h = '<div class="hw-filter" id="hwFilter">';
     h += '<div class="hw-fg"><span class="hw-fl">时间</span>';
     ranges.forEach(function (r) {
@@ -214,6 +215,11 @@
     h += '<div class="hw-fg"><span class="hw-fl">关注级别</span>';
     levels.forEach(function (l) {
       h += '<button class="hw-btn' + (l[0] === 'all' ? ' active' : '') + '" data-level="' + l[0] + '">' + l[1] + '</button>';
+    });
+    h += '</div>';
+    h += '<div class="hw-fg"><span class="hw-fl">确定性</span>';
+    certs.forEach(function (c) {
+      h += '<button class="hw-btn' + (c[0] === 'all' ? ' active' : '') + '" data-cert="' + c[0] + '">' + c[1] + '</button>';
     });
     h += '</div>';
     if (block.filterHint) h += '<div class="hw-fhint">' + block.filterHint + '</div>';
@@ -242,10 +248,13 @@
     (items || []).forEach(function (it) {
       var lvl = it.level === 'long' ? 'long' : 'new';
       var lvlTxt = lvl === 'long' ? '⭐ 长期关注' : '🆕 新品速览';
+      var cert = it.certainty === 'rumor' ? 'rumor' : 'confirmed';
+      var certTxt = cert === 'rumor' ? '🔶 传闻' : '✅ 确定';
       var d = it.date || '';
-      h += '<article class="hw-item' + (it.placeholder ? ' ph' : '') + '" data-date="' + d + '" data-level="' + lvl + '">';
+      h += '<article class="hw-item' + (it.placeholder ? ' ph' : '') + (cert === 'rumor' ? ' rumor' : '') + '" data-date="' + d + '" data-level="' + lvl + '" data-cert="' + cert + '">';
       h += '<div class="hw-ihead"><span class="hw-iname">' + it.name + '</span>';
       h += '<span class="hw-badges"><span class="hw-date">' + (d || '日期待补') + '</span>' +
+        '<span class="hw-cert ' + cert + '">' + certTxt + '</span>' +
         '<span class="hw-lvl ' + lvl + '">' + lvlTxt + '</span></span></div>';
       if (it.brand) h += '<div class="hw-brand">' + it.brand + '</div>';
       h += '<div class="hw-sum">' + it.summary + (it.placeholder ? ' <span class="hw-phtag">🚧 数据待补充</span>' : '') + '</div>';
@@ -274,8 +283,10 @@
     function apply() {
       var rb = bar.querySelector('.hw-btn[data-range].active');
       var lb = bar.querySelector('.hw-btn[data-level].active');
+      var cb = bar.querySelector('.hw-btn[data-cert].active');
       var range = rb ? rb.getAttribute('data-range') : 'all';
       var level = lb ? lb.getAttribute('data-level') : 'all';
+      var cert = cb ? cb.getAttribute('data-cert') : 'all';
       var now = new Date();
       items.forEach(function (el) {
         var d = el.getAttribute('data-date');
@@ -291,10 +302,12 @@
         } else if (range !== 'all' && !dd) {
           dateOK = (range === 'old');
         }
+        var certOK = (cert === 'all') || (cert === el.getAttribute('data-cert'));
         var show;
         if (level === 'long') show = (lvl === 'long');
         else if (level === 'new') show = (lvl === 'new') && (range === 'all' || dateOK);
         else show = dateOK || (lvl === 'long');
+        show = show && certOK;
         el.style.display = show ? '' : 'none';
       });
       document.querySelectorAll('.hw-mod').forEach(function (mod) {

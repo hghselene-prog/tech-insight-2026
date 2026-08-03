@@ -272,6 +272,10 @@ tbody tr:hover{background:var(--panel-2)}
 .hw-items{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .hw-item{background:#fff;border:1px solid #e6e8ef;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
 .hw-item.ph{background:#fafbfe;border-style:dashed;border-color:#e0e4ef}
+.hw-item.rumor{border-style:dashed;border-color:#f0c36d;background:#fffdf5}
+.hw-cert{font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.hw-cert.confirmed{background:#e6f6ec;color:#1c7a43;border:1px solid #b6e3c6}
+.hw-cert.rumor{background:#fdeede;color:#a8631a;border:1px solid #f3c98a}
 .hw-ihead{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .hw-iname{font-weight:700;font-size:15px;color:#1c2230;line-height:1.35}
 .hw-badges{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0}
