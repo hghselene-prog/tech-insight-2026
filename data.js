@@ -710,73 +710,112 @@ var SITE = {
 
   /* ============================ 4. 端侧 Agent ============================ */
   agent: {
-    title: "个人 / 端侧 Agent",
+    title: "端侧 Agent",
     ico: "🤖",
-    sub: "两条路径（顶部可切换）：① 供给侧·品牌平台（苹果 / 华为 / 微软 / 谷歌）　② 需求侧·具体产品（ChatGPT / WorkBuddy / 悟空 / OpenClaw）。",
+    sub: "关注「能在本机跑、替你把事干完」的 Agent：① OS/平台厂商把 Agent 下沉为系统级能力（端侧优先）　② 具体 Agent 产品（跨端执行型）　③ 🔭 研究雷达（在研 / 未发布 / 传闻）。用顶部「信号强度」筛选器，既能看已上市产品，也能看确定的 rumor。",
     conclusions: [
-      { html: "<b>2026 = 智能体落地年：</b>四大 OS 厂商（苹果 / 华为 / 微软 / 谷歌）集体把 Agent 下沉为系统级能力，端侧优先成行业共识。", src: { n: "Apple / 华为 / 微软 / 谷歌 发布", u: "https://www.huxiu.com/article/4865592.html" } },
-      { html: "<b>两条路线：</b>① OS 级 on-device（Apple Siri AI、华为小艺、谷歌 Gemini Nano 3、微软 Windows Local AI，隐私 / 离线优先）；② 跨端本地执行型（WorkBuddy、ChatGPT agent mode、阿里悟空，强调替你把事干完）。", src: { n: "Windows Local AI / 鸿蒙小艺", u: "https://windowsnews.ai/article/build-2026-microsoft-unleashes-ai-agents-across-office-365-windows-and-azure-at-san-francisco-keynot.421349" } },
-      { html: "<b>用户量爆发：</b>ChatGPT 月活破 10 亿、智能体用户破 1000 万；WorkBuddy 国内 PC 端月访问破 2000 万、MAU 2000 万；华为小艺日活 1.8 亿——Agent 已不是玩具。", src: { n: "ChatGPT 月活 / WorkBuddy 月访问", u: "https://new.qq.com/rain/a/20260613A01C1Y00?refer=cp_1009" } },
-      { html: "<b>“会干活”成主战场：</b>ChatGPT agent mode 时长占比上升、WorkBuddy 自给交付、悟空“沟通即执行”、钉钉 8 亿用户 CLI 化——竞争焦点从聊天转向执行。", src: { n: "阿里悟空 / WorkBuddy", u: "https://www.cnr.cn/tech/techgd/20260720/t20260720_527720335.shtml" } },
-      { html: "<b>企业级决战落地：</b>阿里悟空规模化放量、腾讯元器 3000+ 企业、百度千帆 130 万+ Agents、华为 AgentArts 私有化——确定性 / 权限 / 审计成胜负手，而非模型多聪明。", src: { n: "企业级 Agent 决战（36氪）", u: "https://www.36kr.com/p/3809987729842183" } }
+      { html: "<b>2026 = 端侧 Agent 落地年：</b>苹果（Siri AI + System Orchestrator）、微软（Windows 11 成 Agent OS + MXC 沙箱 + OpenClaw 协议）、华为（鸿蒙 7 小艺）、谷歌（Gemini Nano 3 / Android 17）四大 OS 厂商集体把 Agent 下沉为系统级能力，端侧优先成行业共识。", src: { n: "WWDC26 / Build2026 / HDC2026 / I/O2026 综合", u: "https://new.qq.com/rain/a/20260610A06O8P00?refer=cp_1009" } },
+      { html: "<b>「会干活」取代「会聊天」成主战场：</b>苹果 Siri AI 现场演示读 PDF 比价 + 起草邮件；微软 Scout 在 Teams/Outlook 后台替你排日程、起草回复；ChatGPT agent mode、WorkBuddy、阿里悟空、钉钉 CLI 化——竞争焦点从对话转向执行。", src: { n: "WWDC26 Siri AI 演示（21财经）", u: "https://m.21jingji.com/article/20260610/herald/6a7b1d5d4b3e444955442ecd2b6646e2.html" } },
+      { html: "<b>本地优先（local-first）出现硬核硬件：</b>NVIDIA RTX Spark（1 PF FP4、128GB 统一内存、本地跑 120B 模型，Q3 上市）+ DGX Station for Windows（本地跑 1 万亿参数）；Acrab Agent Box（2026-07 发布，本地优先个人 Agent 盒）——「个人算力主权」从概念走向可买。", src: { n: "NVIDIA RTX Spark（Computex 2026）", u: "https://phronews.com/beyond-the-prompt-inside-microsoft-and-nvidias-plan-to-reinvent-windows-for-autonomous-personal-agents?amp=1&noamp=mobile" } },
+      { html: "<b>真正的墙是权限、沙箱与合规，不是模型多聪明：</b>微软 Trusted Agent Framework（意图核验 + 数据最小化 + 人工确认敏感操作）+ MXC 内核级沙箱；OpenClaw 开源协议（MIT，AMD/Intel/NVIDIA/高通背书）解决 Agent 互操作；但 OpenClaw 2026 曾有供应链安全事件，身份 / 沙箱 / 策略合规不可省。", src: { n: "Windows 11 成 Agent OS（Build2026）", u: "https://windowsnews.ai/article/windows-11-becomes-personal-ai-build-2026-agents-guardrails-and-mxc.423421" } },
+      { html: "<b>端侧延迟是当下最硬的指标：</b>本地 TTFT 实测 15–80ms，对比云端 180–600ms，差 4–13 倍；Agent 每步都要重读长上下文，prefill 速度决定本地 Agent 是否「能用」。", src: { n: "On-Device Agent Era 2026", u: "https://www.digitalapplied.com/blog/on-device-local-ai-agents-2026-privacy-cost-stack-forecast" } }
     ],
     blocks: [
-      { type: "tabs", tabs: [
-          { id: "supply", label: "维度一 · 供给侧（品牌平台）" },
-          { id: "demand", label: "维度二 · 需求侧（具体产品）" }
-        ],
-        panels: [
-          { id: "supply", blocks: [
-            { type: "cards", heading: "品牌平台 Agent（系统级 / 端侧优先）",
-              cards: [
-                { k: "Apple · Siri AI", v: "iOS 27 起", edge: "端侧优先（中国区暂未开放）", d: "WWDC26 推出 Siri AI：屏幕感知 + 跨 App 执行 + 个人情境理解；System Orchestrator 调度『端侧模型 / Gemini / 私有云』三层路由，数据默认不出设备。欧盟与中国区暂未开放，需配合监管推进。", src: { n: "WWDC26 Siri AI（虎嗅）", u: "https://www.huxiu.com/article/4865592.html" } },
-                { k: "华为 · 小艺（鸿蒙 7）", v: "日活 1.8 亿", edge: "端侧优先（按需上云）", d: "HDC2026：鸿蒙 7 首建 Agent 亲和架构，小艺深度融入内核与资源调度；已接入 2000+ 智能体、300+ 精品 Skill，日均唤醒 30 亿次，过去一年 Agent 分发量涨 4.5 倍；端侧优先、按需上云。", src: { n: "HDC2026 小艺（China Daily）", u: "https://ex.chinadaily.com.cn/exchange/partners/82/rss/channel/cn/columns/sz8srm/stories/WS6a2bce5aa310942cc49b181c.html" } },
-                { k: "微软 · Windows Local AI", v: "40 TOPS 起步", edge: "本地 NPU（默认无网沙箱）", d: "Build2026 发布系统级 Agent Runtime + Windows Copilot Runtime：本地 NPU 跑 Phi-4-silicon，无需联网即可会议纪要 / 文档处理；承诺 2026 年底前上线 100+ 预置 Agent，Agent 沙箱默认无网络访问。", src: { n: "Build2026 Windows Local AI", u: "https://windowsnews.ai/article/build-2026-microsoft-unleashes-ai-agents-across-office-365-windows-and-azure-at-san-francisco-keynot.421349" } },
-                { k: "谷歌 · Gemini Nano 3 / COSMO", v: "端侧 Function Calling", edge: "端侧优先（需 12GB RAM）", d: "I/O2026：Gemini 取代 Google Assistant 成 Android 17 系统层；Gemini Nano 3 开放公开 SDK（3.5B 参数、多模态、端侧 Function Calling），数据不出设备；后台常驻代理 COSMO 负责主动执行。Gemini Intelligence 需 12GB RAM 机型。", src: { n: "Gemini Nano 3 开放（掘金）", u: "https://juejin.cn/post/7663089074582634538" } }
+      { type: "hwlist", filterHint: "<b>怎么用这页：</b>① <b>信号强度（四档）</b>——本页核心维度，按可信度从高到低：<b>✅ 已上市</b>（已发布可买 / 已落地）→ <b>📢 已官宣</b>（官方确认在做或定档）→ <b>🏭 权威爆料</b>（供应链 / 有记录记者分析师）→ <b>🔶 早期传闻</b>。点 <b>🔭 未发布</b> 可一次性看全部在研 / 传闻内容——这是提前看清方向的地方。② <b>时间</b>——看最新动态选「近30天」；标 ⭐长期关注 与所有「未发布」条目不会被时间筛选隐藏。③ 每条未发布条目带 <b>🔬 对研究的意义</b>，说明为什么值得你跟踪。",
+        modules: [
+          { id: "os", name: "OS / 平台厂商的端侧 Agent", icon: "🖥️",
+            subs: [
+              { cat: "系统级 · 端侧优先（OS 厂商把 Agent 下沉为系统能力）", items: [
+                { name: "Apple · Siri AI（System Orchestrator）", brand: "Apple · WWDC26", date: "2026-06", level: "long", certainty: "shipped",
+                  summary: "WWDC26 落地的系统级 Agent：System Orchestrator 调度四大模块（个人情境 / 世界知识 / Actions / 屏幕感知），端侧跑 AFM 3 Core（3B，全系）+ AFM 3 Core Advanced（20B、1–4B 激活，仅 A19 Pro/M3/M4）；复杂任务上 Private Cloud Compute（AFM 3 Cloud Pro，跑在 Google Cloud 的 NVIDIA GPU 上）。中国区与欧盟暂未开放，国行大概率用千问（Qwen）作本地大脑。",
+                  src: { n: "WWDC26 Siri AI（腾讯新闻）", u: "https://new.qq.com/rain/a/20260610A06O8P00?refer=cp_1009" },
+                  src2: { n: "AFM 架构详解（rrows.net）", u: "https://rrows.net/2026/06/10/apple-puts-you-at-the.html" } },
+                { name: "华为 · 小艺（鸿蒙 7 Agent 亲和架构）", brand: "华为 · HDC2026", date: "2026-06", level: "long", certainty: "shipped",
+                  summary: "HDC2026：鸿蒙 7 首建 Agent 亲和架构，小艺深度融入内核与资源调度；已接入 2000+ 智能体、300+ 精品 Skill，日均唤醒 30 亿次，过去一年 Agent 分发量涨 4.5 倍；端侧优先、按需上云。日活约 1.8 亿。",
+                  src: { n: "HDC2026 小艺（China Daily）", u: "https://ex.chinadaily.com.cn/exchange/partners/82/rss/channel/cn/columns/sz8srm/stories/WS6a2bce5aa310942cc49b181c.html" } },
+                { name: "微软 · Windows Local AI（MXC + OpenClaw + Scout）", brand: "微软 · Build2026", date: "2026-06", level: "long", certainty: "shipped",
+                  summary: "Build2026 把 Windows 11 定位为「本地 AI Agent 的 OS」：内核级 MXC 沙箱隔离每个 Agent；开源 OpenClaw 协议（MIT，AMD/Intel/NVIDIA/高通背书）做 Agent 互操作；Scout 常驻 Agent 嵌入 Teams/Outlook/桌面；Aion 1.0 端侧模型；Trusted Agent Framework 做意图核验 + 数据最小化 + 人工确认。配 NVIDIA RTX Spark 模块（Q3 上市）。",
+                  src: { n: "Windows 11 成 Agent OS（Build2026）", u: "https://windowsnews.ai/article/windows-11-becomes-personal-ai-build-2026-agents-guardrails-and-mxc.423421" } },
+                { name: "谷歌 · Gemini Nano 3 / COSMO", brand: "谷歌 · I/O2026", date: "2026-05", level: "long", certainty: "shipped",
+                  summary: "I/O2026：Gemini 取代 Google Assistant 成 Android 17 系统层；Gemini Nano 3 开放公开 SDK（3.5B 参数、多模态、端侧 Function Calling），数据不出设备；后台常驻代理 COSMO 负责主动执行。Gemini Intelligence 需 12GB RAM 机型。",
+                  src: { n: "Gemini Nano 3 开放（掘金）", u: "https://juejin.cn/post/7663089074582634538" } },
+                { name: "小米 / 联想 · Snapdragon Agent 生态", brand: "小米 / 联想 · Computex2026", date: "2026-06", level: "long", certainty: "supply",
+                  summary: "高通 Amon 在 Computex2026 称「现有装置不是为 agent 自主执行而生」，下一代需更高能效 NPU（参考设计 140 TOPS）；OpenClaw、Hermes 等协调器已可在 Snapdragon 上运行，Claw Desktop 这类 agentic 助理能在 Snapdragon PC 原生执行。小米 / 联想作为骁龙阵营厂商，端侧 Agent 底座随平台走。",
+                  src: { n: "Computex2026 高通 keynote", u: "https://netmag.tw/2026/06/01/computex-2026-qualcomm-keynote" } }
               ] }
-          ] },
-          { id: "demand", blocks: [
-            { type: "table", heading: "具体 Agent 产品（功能 / 用户量 / 使用变化）",
-              table: {
-                head: ["产品", "厂商 / 形态", "核心功能", "用户量 / 使用变化", "端侧程度", "信源"],
-                rows: [
-                  { cells: ["ChatGPT（Agent）", "OpenAI · 云端为主，Web / 移动 / IDE", "ChatGPT Work（综合任务 Agent）+ Codex（编程 Agent）；agent mode 多步任务时长占比上升；企业席位 + agent 执行计费", "月活破 10 亿（2026-05，Sensor Tower）；智能体用户破 1000 万（2026-07，Work + Codex）；周活约 5 亿", "云端为主（agent mode 跑云）"], src: { n: "ChatGPT 月活破 10 亿（腾讯新闻）", u: "https://new.qq.com/rain/a/20260613A01C1Y00?refer=cp_1009" } },
-                  { cells: ["WorkBuddy", "腾讯 · 桌面 / 鸿蒙电脑 / App / 微信小程序", "自然语言→自主拆解→读写本地文件、调桌面应用→直接交付成品；接混元 / DeepSeek / Kimi / GLM 等；技能智库 140+ 顾问、2.2 万+ 插件", "2026-06 月访问 2097 万（国内 PC 端 AI 办公第一，超二三名总和）；MAU 2000 万、DAU 1300 万；3→6 月访问量 2.4 倍", "桌面跨端 + 云模型"], src: { n: "WorkBuddy 月访问破 2000 万（央广网）", u: "https://www.cnr.cn/tech/techgd/20260720/t20260720_527720335.shtml" } },
-                  { cells: ["悟空（Wukong）", "阿里巴巴 / 钉钉 · 企业级 CLI 原生", "把钉钉 CLI 化改造，Agent 原生操作钉钉上千项能力（文档 / 审批 / 日程 / 通讯录），实现“沟通即执行”；继承企业权限，安全沙箱运行、全程可审计", "2026-03-17 发布；钉钉 8 亿用户底座；5 月阿里财报称已“规模化放量”，落地电商 / 零售 / 制造等真实场景", "企业云（钉钉底座）"], src: { n: "钉钉悟空（人民日报海外版）", u: "http://m2.people.cn/news/default.html?s=MV8xXzQwNjg4MjczXzQwNDIxNF8xNzc0Mzk3MjIw&from=sohu" } },
-                  { cells: ["OpenClaw（龙虾）", "开源 · 本地优先自主执行", "本地运行、自主执行、工具联动，重新定义 Agent 落地形态；引发“养龙虾”风潮，阿里 / 腾讯 / 字节 / 智谱等推出兼容或自研框架", "GitHub 26 万+ Stars；中国日均 Token 调用从 2024 初 1000 亿飙至 2026-03 破 140 万亿（两年超千倍）", "本地优先（自主执行）"], src: { n: "OpenClaw 与 Token 消耗（人民网）", u: "http://m2.people.cn/news/default.html?s=MV8xXzQwNjg4MjczXzQwNDIxNF8xNzc0Mzk3MjIw&from=sohu" } }
-                ]
-              } },
-            { type: "compare",
-              chart: {
-                title: "用户量 / 活跃度量级对比（口径见注）",
-                items: [
-                  { name: "ChatGPT", value: 1000000000, label: "月活 10 亿", basis: "Sensor Tower（月活）" },
-                  { name: "悟空（钉钉底座）", value: 800000000, label: "8 亿用户", basis: "阿里财报（间接）" },
-                  { name: "WorkBuddy", value: 20000000, label: "MAU 2000 万", basis: "央广网（MAU）" },
-                  { name: "OpenClaw", value: 260000, label: "GitHub 26 万★", basis: "人民网（Stars·开发者热度）" }
-                ],
-                note: "口径不同，不可直接相加：ChatGPT / WorkBuddy 为月活，悟空为钉钉底座用户（间接），OpenClaw 为 GitHub Stars（开发者热度）。此处仅用于直观感受量级差异。"
-              } }
-          ] }
-        ] }
+            ]
+          },
+          { id: "product", name: "具体 Agent 产品（跨端执行型）", icon: "📦",
+            subs: [
+              { cat: "已落地 · 替你把事干完", items: [
+                { name: "ChatGPT（Agent Mode / Work / Codex）", brand: "OpenAI · 云端为主", date: "2026-07", level: "long", certainty: "shipped",
+                  summary: "ChatGPT Work（综合任务 Agent）+ Codex（编程 Agent）；agent mode 多步任务时长占比上升，企业席位 + agent 执行计费。月活破 10 亿（2026-05），智能体用户破 1000 万（2026-07，Work + Codex）。",
+                  src: { n: "ChatGPT 月活破 10 亿（腾讯新闻）", u: "https://new.qq.com/rain/a/20260613A01C1Y00?refer=cp_1009" } },
+                { name: "WorkBuddy", brand: "国内 PC 端 · 自给交付", date: "2026-06", level: "long", certainty: "shipped",
+                  summary: "国内 PC 端 Agent，月访问破 2000 万、MAU 约 2000 万；强调「自给交付」——不只是给建议，而是直接产出文件 / 代码 / 结果；跨端本地执行。",
+                  src: { n: "WorkBuddy 月访问（腾讯新闻）", u: "https://new.qq.com/rain/a/20260613A01C1Y00?refer=cp_1009" } },
+                { name: "阿里 · 悟空", brand: "阿里 · 企业级放量", date: "2026-07", level: "long", certainty: "shipped",
+                  summary: "「沟通即执行」的企业级 Agent，已规模化放量；阿里云 AI 收入占比首破 30%，悟空是 B 端落地抓手之一。",
+                  src: { n: "阿里悟空（央广网）", u: "https://www.cnr.cn/tech/techgd/20260720/t20260720_527720335.shtml" } },
+                { name: "钉钉（8 亿用户 CLI 化）", brand: "阿里 · 协同办公", date: "2026-06", level: "new", certainty: "shipped",
+                  summary: "8 亿用户规模的协同办公入口 CLI 化——把审批 / 日程 / 文档 / 机器人变成可被 Agent 调用的指令；企业级 Agent 决战的关键战场。",
+                  src: { n: "企业级 Agent 决战（36氪）", u: "https://www.36kr.com/p/3809987729842183" } },
+                { name: "Cursor / Claude Code（编码 Agent）", brand: "Anysphere / Anthropic", date: "2026-07", level: "long", certainty: "shipped",
+                  summary: "编码 Agent 双代表：Cursor 把 IDE 变成「自然语言改代码」，Claude Code 把终端变成「自主编程 Agent」；是端侧 / 本地开发流里最成熟的 agentic 形态，直接对标 AI智核的开发者场景。",
+                  src: { n: "Claude Opus 5 官方", u: "https://www.anthropic.com/news/claude-opus-5" } },
+                { name: "OpenClaw / Claw Desktop（开源协议 + 桌面 Agent）", brand: "开源 · MIT", date: "2026-06", level: "long", certainty: "shipped",
+                  summary: "微软在 Build2026 开源的 Agent 互操作协议（MIT，AMD/Intel/NVIDIA/高通背书），定义 Agent 如何发现彼此、协商任务、交换结果；Claw Desktop 是其桌面端 agentic 助理，可在 Snapdragon PC 原生执行。注意：OpenClaw 2026 曾有供应链安全事件，身份 / 沙箱 / 策略合规不可省。",
+                  src: { n: "Windows 11 成 Agent OS（Build2026）", u: "https://windowsnews.ai/article/windows-11-becomes-personal-ai-build-2026-agents-guardrails-and-mxc.423421" } },
+                { name: "字节 · 豆包 / 扣子（Coze）", brand: "字节跳动", date: "2026-06", level: "new", certainty: "shipped",
+                  summary: "豆包是 C 端对话 / 创作 Agent，扣子（Coze）是 Agent 搭建平台；与豆包手机（Ola Friend + 豆包手机）联动，构成「模型 + 硬件 + Agent」闭环。",
+                  src: { n: "新浪·大模型公司为何造手机", u: "https://k.sina.com.cn/article_1496814565_593793e5020020q2u.html" } }
+              ] }
+            ]
+          },
+          { id: "radar", name: "🔭 研究雷达 · 在研 / 未发布 / 传闻", icon: "🛰️",
+            subs: [
+              { cat: "值得提前跟踪的端侧 Agent 方向（含权威爆料与早期传闻）", items: [
+                { name: "NVIDIA RTX Spark / DGX Station for Windows", brand: "NVIDIA · 已发布 Q3 上市", date: "2026-05", level: "long", certainty: "announced",
+                  summary: "Computex2026 发布：RTX Spark 是 PCIe 卡式「个人 AI 超级计算机」（GB306 GPU + 24GB 共享内存，1 PF FP4，128GB 统一内存，本地跑 120B 模型 @1M 上下文）；DGX Station for Windows 本地跑最高 1 万亿参数。Surface Laptop Studio / Pro 可选配 RTX Spark（Q3 2026）。",
+                  why: "<b>直接对标「个人 AI 计算机」形态</b>——AI智核（盒）的概念验证与竞品参照，验证「本地跑大模型 + 常驻 Agent」的硬件可行性。",
+                  src: { n: "NVIDIA RTX Spark（phronews）", u: "https://phronews.com/beyond-the-prompt-inside-microsoft-and-nvidias-plan-to-reinvent-windows-for-autonomous-personal-agents?amp=1&noamp=mobile" } },
+                { name: "Acrab Agent Box（本地优先个人 Agent 盒）", brand: "Acrab · 2026-07 发布", date: "2026-07", level: "long", certainty: "announced",
+                  summary: "2026-07-23 发布：GLIX 1 是 5nm 边缘 AI SoC（20 核 Arm CPU + 多核 NPU + 273 GB/s 统一内存带宽），本地跑 100B 级模型；Agent Box 是消费级个人边缘 AI 中心，记忆 / 上下文 / 推理全在本地，无云依赖。自称 prefill 比 Mac Mini M4 Pro 快 7.5×。已融资 3.5 亿美元，未公布定价与发货日（供应商自报基准）。",
+                  why: "<b>与 AI智核（盒）概念高度重合</b>——「个人 Agent 不该住别人数据中心」的本地优先范式，是 AI智核最直面的竞品 / 参照；其「一次性硬件投入 vs 按 token 计费」的商业模式论证值得深挖。",
+                  src: { n: "Acrab Agent Box（agentmarketcap.ai）", u: "https://agentmarketcap.ai/blog/2026/07/27/acrab-glix-1-agent-box-edge-ai-personal-agents" } },
+                { name: "Nous Research · Hermes Desktop", brand: "开源 · 2026-06", date: "2026-06", level: "new", certainty: "shipped",
+                  summary: "2026-06-02/03 发布的原生跨平台开源 Agent 前端，配套开源 Hermes 模型；是「本地优先 Agent 技术栈」的开放选项代表（硅 / OS / 运行时 / 框架 / 云回退五层里，框架层开源）。",
+                  why: "<b>开源本地 Agent 范式的标杆</b>——若 AI智核走开放路线，Hermes Desktop 是可借鉴的本地 Agent 交互与编排层。",
+                  src: { n: "On-Device Agent Era 2026", u: "https://www.digitalapplied.com/blog/on-device-local-ai-agents-2026-privacy-cost-stack-forecast" } },
+                { name: "苹果国行 Siri AI（千问 / 阿里合作）", brand: "Apple × 阿里 / 百度", date: "", level: "long", certainty: "rumor",
+                  summary: "苹果中国区 AI 合规：曾计划用文心一言 4.0 作国行底层，后与阿里合作落地合规审核；在无法直接用 Google 服务下，千问（Qwen）被视为最可能的「本土大脑」。国行 Siri AI 能否落地、多快落地，决定中国用户能否用上新版 Siri。",
+                  why: "<b>中国区端侧 Agent 落地的最大变量</b>——直接影响国内「系统级 Agent」竞争格局，决定 AI智核是否需要兼容国行 Siri 生态。",
+                  src: { n: "WWDC26 苹果 AI（21财经）", u: "https://m.21jingji.com/article/20260610/herald/6a7b1d5d4b3e444955442ecd2b6646e2.html" } },
+                { name: "高通 Snapdragon agent 重构（140 TOPS NPU）", brand: "Qualcomm · Computex2026", date: "2026-06", level: "long", certainty: "supply",
+                  summary: "Amon 称现有装置非为 agent 自主执行而设计，下一代需更高能效 NPU + 低延迟；参考设计 NPU 已达 140 TOPS，支持 OpenClaw / Hermes 在骁龙上原生跑。功耗管理是 agentic 装置核心工程挑战。",
+                  why: "<b>端侧 Agent 的芯片底座</b>——AI智核若采用 ARM / 骁龙路线，需对标此 NPU 能效与功耗约束。",
+                  src: { n: "Computex2026 高通 keynote", u: "https://netmag.tw/2026/06/01/computex-2026-qualcomm-keynote" } },
+                { name: "华为 · AgentArts（私有化 Agent 平台）", brand: "华为 · 企业级", date: "2026-06", level: "long", certainty: "shipped",
+                  summary: "面向企业的私有化 Agent 平台，与昇腾芯片 + 鸿蒙小艺协同；企业级 Agent 决战中，确定性 / 权限 / 审计是胜负手。",
+                  why: "<b>企业端侧 / 私有化 Agent 标杆</b>——AI智核若切入 B 端，AgentArts 的权限 / 审计框架是重要参照。",
+                  src: { n: "企业级 Agent 决战（36氪）", u: "https://www.36kr.com/p/3809987729842183" } },
+                { name: "小米 / 联想 自研端侧 Agent 盒", brand: "小米 / 联想 · 传闻", date: "", level: "new", certainty: "rumor",
+                  summary: "大模型 / agent 厂商亲自下场定义硬件成趋势（OpenAI io、字节豆包手机、阶跃 STEPX Neo）；小米 / 联想作为硬件 + 生态厂商，存在推出「自研端侧 Agent 盒」的可能，但尚无官方定档信息。",
+                  why: "<b>潜在竞品方向</b>——若硬件厂也做本地 Agent 盒，AI智核的差异化（个人算力主权）需更明确。",
+                  src: { n: "新浪·大模型公司为何造手机", u: "https://k.sina.com.cn/article_1496814565_593793e5020020q2u.html" } }
+              ] }
+            ]
+          }
+        ]
+      }
     ],
+    insightsTitle: "洞察",
     insights: [
-      { type: "", html: "<b>洞察（分水岭）：</b>端侧 / 个人 Agent 的真正分水岭不是“能不能聊天”，而是“能不能替你把事干完且可追溯”。两类路线殊途同归：OS 厂商把能力下沉到 NPU 与内核（隐私 / 离线），应用厂商把能力上提到工作流与文件（效率 / 交付）。选型看场景——重隐私选 on-device，重交付选跨端执行型。", src: { n: "企业级 Agent 决战（36氪）", u: "https://www.36kr.com/p/3809987729842183" } },
-      { type: "warn", html: "<b>洞察（被忽视的真相）：</b>“月活”≠“付费”，Agent 收入仍在早期。ChatGPT 智能体用户约 1000 万 vs 9 亿周活，内部转化空间巨大；企业级 Agent 胜负手是确定性 / 权限 / 审计，而非模型多聪明。引用数据时注意口径：ChatGPT 月活 10 亿（Sensor Tower 估算）与周活 5 亿、智能体 1000 万来源不同，勿混用。", src: { n: "ChatGPT 用户数据（countly）", u: "https://countly.net/how-many-chatgpt-users-are-there-in-2026-global-by-country-45ee" } }
-    ],
-    sources: [
-      { n: "WWDC26 Siri AI（虎嗅）", u: "https://www.huxiu.com/article/4865592.html" },
-      { n: "HDC2026 小艺（China Daily）", u: "https://ex.chinadaily.com.cn/exchange/partners/82/rss/channel/cn/columns/sz8srm/stories/WS6a2bce5aa310942cc49b181c.html" },
-      { n: "Build2026 Windows Local AI（windowsnews.ai）", u: "https://windowsnews.ai/article/build-2026-microsoft-unleashes-ai-agents-across-office-365-windows-and-azure-at-san-francisco-keynot.421349" },
-      { n: "Microsoft Agent Platform（windowsnews.ai）", u: "https://windowsnews.ai/article/microsoft-unleashes-ai-agent-platform-across-windows-copilot-and-azure.421835" },
-      { n: "Gemini Nano 3 开放（掘金）", u: "https://juejin.cn/post/7663089074582634538" },
-      { n: "Google I/O 2026 Astra（今日头条）", u: "https://www.toutiao.com/article/7641423620539826697" },
-      { n: "ChatGPT 月活破 10 亿（腾讯新闻）", u: "https://new.qq.com/rain/a/20260613A01C1Y00?refer=cp_1009" },
-      { n: "WorkBuddy 月访问破 2000 万（央广网）", u: "https://www.cnr.cn/tech/techgd/20260720/t20260720_527720335.shtml" },
-      { n: "WorkBuddy 鸿蒙电脑（腾讯新闻）", u: "https://new.qq.com/rain/a/20260727A060OI00?refer=cp_1009" },
-      { n: "钉钉悟空（人民日报海外版 / 央视）", u: "http://m2.people.cn/news/default.html?s=MV8xXzQwNjg4MjczXzQwNDIxNF8xNzc0Mzk3MjIw&from=sohu" },
-      { n: "企业级 Agent 决战（36氪）", u: "https://www.36kr.com/p/3809987729842183" },
-      { n: "OpenClaw 与 Token 消耗（人民网）", u: "http://m2.people.cn/news/default.html?s=MV8xXzQwNjg4MjczXzQwNDIxNF8xNzc0Mzk3MjIw&from=sohu" }
+      { html: "<b>洞察 1 · 端侧 Agent 的真正护城河是「系统级编排 + 本地隐私」，不是模型参数：</b>苹果 System Orchestrator、微软 MXC + OpenClaw、华为鸿蒙 Agent 亲和架构，三家都选择把 Agent 下沉到 OS 内核 / 资源调度层，而非做个 App。谁的 Agent 能无感调用系统能力、数据默认不出设备，谁就赢。", src: { n: "WWDC26 / Build2026 综合", u: "https://windowsnews.ai/article/windows-11-becomes-personal-ai-build-2026-agents-guardrails-and-mxc.423421" } },
+      { html: "<b>洞察 2 · 「本地优先」出现硬核硬件，AI智核（盒）从概念走向可买：</b>NVIDIA RTX Spark / DGX Station、Acrab Agent Box 把「个人算力主权」做成实体——本地跑 120B~1T 模型、常驻 Agent、记忆不出设备。这既验证方向，也意味着 AI智核 将面临「显卡厂 + 创业公司」的正面竞争。", src: { n: "Acrab Agent Box", u: "https://agentmarketcap.ai/blog/2026/07/27/acrab-glix-1-agent-box-edge-ai-personal-agents" } },
+      { html: "<b>洞察 3 · 商业模式在翻转：一次性硬件 vs 按 token 计费：</b>云 Agent 每步推理都烧 token（agentic 工作量是单次聊天的 10–100×），本地 Agent 边际成本趋近电费。Acrab 的「一次性硬件投入、零边际推理成本」对「常驻个人 Agent」是结构性的成本优势——这是 AI智核 定价逻辑的核心论据。", src: { n: "On-Device Agent Era 2026", u: "https://www.digitalapplied.com/blog/on-device-local-ai-agents-2026-privacy-cost-stack-forecast" } },
+      { html: "<b>洞察 4 · 权限、沙箱、合规是「会干活的 Agent」的生死线：</b>微软 Trusted Agent Framework（意图核验 + 数据最小化 + 人工确认）+ MXC 内核沙箱；但 OpenClaw 2026 有供应链安全事件——Agent 能替你发邮件 / 付款，身份与沙箱就不能省。对 AI智核 而言，「默认拒绝 + 强制鉴权 + 审计日志」不是可选项。", src: { n: "Windows 11 成 Agent OS（Build2026）", u: "https://windowsnews.ai/article/windows-11-becomes-personal-ai-build-2026-agents-guardrails-and-mxc.423421" } },
+      { html: "<b>洞察 5 · 中国区是独立变量：</b>苹果国行 Siri AI 需本土大脑（千问最可能），华为 / 阿里 / 字节已建本土 Agent 栈。AI智核 若面向国内，必须兼容「国行合规 + 本土模型 + 鸿蒙 / 安卓双生态」，不能照搬海外端侧方案。", src: { n: "WWDC26 苹果 AI（21财经）", u: "https://m.21jingji.com/article/20260610/herald/6a7b1d5d4b3e444955442ecd2b6646e2.html" } }
     ]
   },
 
@@ -808,6 +847,15 @@ var SITE = {
           { t: "<b>芯片与制程底座：</b>2nm/3nm 量产、硅碳电池续航、HBM 高带宽内存、模型压缩（如 Netspresso 体积 -90% 不损精度）共同把“本地跑大模型”从噱头变现实；TOPS 军备竞赛背后，内存带宽与能效才是体验分水岭。", src: { n: "IDC 官方", u: "https://www.idc.com/resource-center/press-releases/china-is-leading-the-ai-supercycle-and-the-distance-is-growing" } },
           { t: "<b>国内全栈自主路线：</b>华为以昇腾 + 麒麟芯片亲和，将原生 30B 入端模型（2B 激活）常驻运存，openPangu 2.0 开源（5050 亿 Pro / 920 亿 Flash、512K 上下文）；小米/OPPO/vivo 展示端侧视觉-语言-动作（VLA）Agent；鸿蒙纯血 7.0 把“Agent 亲和”放系统核心。", src: { n: "财经杂志 HDC", u: "https://www.mycaijing.com/article/detail/570133" } }
         ] }
+,
+      { type: "cards", heading: "🔭 研究雷达 · 端侧 AI 产业链在研 / 未发布方向",
+        cards: [
+          { k: "📢 Edge AI 市场拐点（2026–2033）", v: "$30–47.6B → $118.7B", d: "2026 年 Edge AI 市场规模约 $30–47.6B，预计 2033 年达 $118.7B（CAGR 21.7%）；边缘 AI 芯片出货约 16 亿颗。这是「个人算力主权」赛道的体量与增速锚点。", src: { n: "On-Device Agent Era 2026", u: "https://www.digitalapplied.com/blog/on-device-local-ai-agents-2026-privacy-cost-stack-forecast" } },
+          { k: "📢 NVIDIA RTX Spark / DGX Station", v: "已发布 · Q3 上市", d: "RTX Spark（PCIe 卡，1 PF FP4、128GB 统一内存、本地 120B 模型）+ DGX Station（本地 1 万亿参数）把「个人 / 桌面 AI 计算机」做成实体，是 AI智核（盒）最直接的竞品参照。", src: { n: "NVIDIA RTX Spark（phronews）", u: "https://phronews.com/beyond-the-prompt-inside-microsoft-and-nvidias-plan-to-reinvent-windows-for-autonomous-personal-agents?amp=1&noamp=mobile" } },
+          { k: "📢 Acrab GLIX 1 / Agent Box", v: "2026-07 发布 · 未定价", d: "5nm 边缘 AI SoC（273 GB/s 内存带宽，本地 100B 级）+ 消费级本地优先 Agent 盒，自称 prefill 比 Mac Mini M4 Pro 快 7.5×；融资 3.5 亿美元，无发货日。本地优先范式的创业公司样本。", src: { n: "Acrab Agent Box", u: "https://agentmarketcap.ai/blog/2026/07/27/acrab-glix-1-agent-box-edge-ai-personal-agents" } },
+          { k: "✅ 开源 Agent 工具链（OpenClaw / Hermes）", v: "已落地", d: "微软开源 OpenClaw 协议（MIT，AMD/Intel/NVIDIA/高通背书）做 Agent 互操作；Nous Research Hermes Desktop 是开源本地 Agent 前端。工具链开源是 AI智核 走开放路线的可借鉴底座。", src: { n: "On-Device Agent Era 2026", u: "https://www.digitalapplied.com/blog/on-device-local-ai-agents-2026-privacy-cost-stack-forecast" } },
+          { k: "✅ 端侧推理框架成熟（llama.cpp / MLC-LLM / Ollama）", v: "已落地", d: "开源推理引擎让 35B 模型跑在 $351 mini PC、本地 NPU TTFT 低至 sub-10ms（比云快约 3×）。框架层成熟是「本地跑大模型」从噱头变现实的关键。", src: { n: "On-Device Agent Era 2026", u: "https://www.digitalapplied.com/blog/on-device-local-ai-agents-2026-privacy-cost-stack-forecast" } }
+        ] },
     ],
     insights: [
       { type: "", html: "<b>洞察 8：</b>操作系统 AI 化竞赛已从“加点 AI 功能”升级为<b>体系战</b>。苹果主打“隐私优先的端侧计算”（Gemini 补智能、私有云计算兜底），华为主打“跨设备协同 + 开源生态灵活”，二者同周亮剑意味着“大模型深嵌 OS 底层”已成全球行业共识。", src: { n: "腾讯新闻 HDC", u: "https://new.qq.com/rain/a/20260614A06YXC00" } },
@@ -911,7 +959,7 @@ var SITE = {
               { n: "Artificial Analysis", u: "https://artificialanalysis.ai" }
             ] },
           { id: "agent", label: "🤖 端侧 Agent",
-            logic: "双维度：① 品牌平台（苹果 / 华为 / 微软 / 谷歌）把 Agent 做成 OS 级、端侧优先；② 具体 Agent 产品（ChatGPT / WorkBuddy / 悟空 / OpenClaw）的功能、用户量、使用变化。结论看“会干活”与“可交付”。",
+            logic: "以「能在本机跑、替你把事干完」为主线，分三模块：① OS/平台厂商把 Agent 下沉为系统级（端侧优先）② 具体 Agent 产品（跨端执行型）③ 🔭 研究雷达（在研 / 未发布 / 传闻）。顶部「信号强度」四档筛选器（✅已上市 / 📢已官宣 / 🏭权威爆料 / 🔶早期传闻）让已上市产品与确定 rumor 并行呈现，每条 rumor 带「对研究的意义」。",
             focus: ["品牌平台：系统级 / 端侧优先路线", "产品维度：用户量、使用变化、付费转化", "企业级 Agent 的确定性 / 权限 / 审计"],
             cats: ["① 官方 / IR（厂商发布）", "④ 媒体（用户量交叉）", "⑥ 监管（合规约束）"],
             examples: [
