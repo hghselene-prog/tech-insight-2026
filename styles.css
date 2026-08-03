@@ -255,3 +255,36 @@ tbody tr:hover{background:var(--panel-2)}
 .co-src .cite{font-weight:600; color:#1f4fd6}
 .dark .co-src{background:#16203a; border-color:#284070; color:#aebbe0}
 .dark .co-src .cite{color:#8fb0ff}
+
+/* ---------- 硬件三大模块 + 时间/级别筛选 ---------- */
+.hw-filter{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;background:#fff;border:1px solid #e6e8ef;border-radius:12px;padding:11px 14px;margin:6px 0 14px;position:sticky;top:60px;z-index:5}
+.hw-fg{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.hw-fl{font-size:12px;color:#8a90a2;font-weight:600;margin-right:2px}
+.hw-btn{font:inherit;font-size:13px;padding:5px 11px;border:1px solid #d9dde7;background:#f7f8fb;color:#51566a;border-radius:999px;cursor:pointer;transition:.15s}
+.hw-btn:hover{border-color:#b9c0d0}
+.hw-btn.active{background:#2b6cff;color:#fff;border-color:#2b6cff}
+.hw-fhint{width:100%;font-size:12px;color:#8a90a2;margin-top:2px;line-height:1.5}
+.hw-mod{margin:18px 0}
+.hw-mod-h{font-size:18px;font-weight:700;color:#1c2230;margin:0 0 6px;padding-left:10px;border-left:4px solid #2b6cff}
+.hw-mod-note{font-size:12.5px;color:#e8590c;background:#fff4ec;border:1px solid #ffd8b8;border-radius:8px;padding:7px 10px;margin:0 0 10px;line-height:1.5}
+.hw-sub{margin:12px 0}
+.hw-sub-h{font-size:14px;font-weight:700;color:#374054;margin:0 0 8px;padding-bottom:4px;border-bottom:1px dashed #e3e6ee}
+.hw-items{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.hw-item{background:#fff;border:1px solid #e6e8ef;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.hw-item.ph{background:#fafbfe;border-style:dashed;border-color:#e0e4ef}
+.hw-ihead{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.hw-iname{font-weight:700;font-size:15px;color:#1c2230;line-height:1.35}
+.hw-badges{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0}
+.hw-date{font-size:11px;color:#9aa0b2}
+.hw-lvl{font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.hw-lvl.long{background:#fff3bf;color:#9a6b00;border:1px solid #ffe08a}
+.hw-lvl.new{background:#e7f5ff;color:#1c6dd0;border:1px solid #b9e0ff}
+.hw-brand{font-size:12px;color:#8a90a2}
+.hw-sum{font-size:13px;color:#3a4053;line-height:1.55}
+.hw-phtag{display:inline-block;font-size:11px;color:#e8590c;background:#fff4ec;border:1px solid #ffd8b8;border-radius:6px;padding:1px 6px;margin-left:4px}
+.hw-metrics{display:flex;flex-direction:column;gap:4px;border-top:1px solid #f0f2f7;padding-top:7px}
+.hw-metric{font-size:12.5px;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}
+.hw-mk{font-weight:600;color:#51566a}
+.hw-mv{color:#2b6cff;font-weight:700}
+.hw-md{color:#8a90a2;font-size:12px}
+@media(max-width:760px){.hw-items{grid-template-columns:1fr}.hw-filter{position:static}}

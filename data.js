@@ -1,7 +1,7 @@
 /* ============================================================
    科技行业洞察 · 2026 Q2
    统一结构：所有页面共用 blocks[]，渲染由 app.js 单一遍历完成。
-   每块 type：table | cards | bullets | company | compare | tabs | taxonomy | pages
+   每块 type：table | cards | bullets | company | compare | tabs | taxonomy | pages | hwlist
    每条数据均带 src（来源名称 + 可点击链接），页面内可点回原始出处。
    更新方式：改本文件对应字段 → 刷新即生效（GitHub Pages 自动部署）。
    ============================================================ */
@@ -9,14 +9,14 @@ var SITE = {
   meta: {
     title: "科技行业洞察",
     period: "2026 Q2 财报季",
-    lastUpdated: "2026-07-29",
+    lastUpdated: "2026-08-03",
     updateCadence: "每周更新（周一）",
     note: "第一页为财报数据呈现；所有数据均附来源链接，可点回原始出处。"
   },
 
   nav: [
     { id: "earnings", label: "财报",          ico: "📊" },
-    { id: "pc",       label: "PC/平板新品",   ico: "💻" },
+    { id: "pc",       label: "硬件新品",      ico: "💻" },
     { id: "models",   label: "AI 模型",       ico: "🧠" },
     { id: "agent",    label: "端侧 Agent",    ico: "🤖" },
     { id: "industry", label: "端侧 AI 产业",  ico: "🌐" },
@@ -262,9 +262,9 @@ var SITE = {
 
   /* ============================ 2. PC/平板新品 ============================ */
   pc: {
-    title: "PC / 平板硬件新品分析",
+    title: "硬件新品 · PC / 平板 / AI 智能硬件",
     ico: "💻",
-    sub: "按品牌梳理 2026 年 PC / 平板硬件新品：关注轻薄化、自研芯片、端侧 AI 与游戏本性能内卷。数据来源覆盖 IT之家、太平洋电脑网、腾讯/新浪新闻与各大品牌官网。",
+    sub: "按「品类三大模块 + 时间 × 关注级别」组织：① PC/笔记本 ② 平板 ③ AI 智能硬件（耳机/云台/键盘/穿戴等）。每条目带日期与关注级别——⭐长期关注（结构性重要，如新 AI 系统/芯片平台）🆕新品速览（一过性新机）。页顶可按时间范围 / 关注级别筛选，近期信息默认全显，重要旧信息靠「长期关注」不漏看。数据来源覆盖 IT之家、太平洋电脑网、腾讯/新浪新闻与各大品牌官网。",
     conclusions: [
       { html: "<b>2026 硬件主线三线并行：</b>轻薄化（华为 798g / 联想 975g）、自研芯片（华为麒麟 X 系、苹果 M5）、端侧 AI（NPU 普遍 40–180 TOPS）成为新品共同卖点。", src: { n: "网易/机智猫", u: "https://www.163.com/dy/article/L317LSAB05118UEG.html" } },
       { html: "<b>华为打出「鸿蒙 PC + 自研麒麟」组合拳：</b>MateBook Pro S 仅 798g 刷新 14″ 金属本纪录，MateBook Fold 二代加手写笔，麒麟 XE90/X90 Plus 形成三层芯片布局。", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260729A04C9A00?refer=cp_1009" } },
@@ -273,122 +273,121 @@ var SITE = {
       { html: "<b>端侧 AI 仍是「算力到位、场景缺位」：</b>NPU 普遍 40–180 TOPS，但系统级智能体（联想 Qira、华为小艺、Apple Intelligence）才是把算力变刚需的关键，瓶颈仍在 OS 层。", src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } }
     ],
     blocks: [
-      { type: "taxonomy", heading: "一、2026 硬件新品全景（按品牌阵营）",
-        items: [
-          { cat: "国际品牌 · Apple", desc: "春季新品周全系 M5 + 端侧 AI 普及，平板与笔电同步迭代。",
-            examples: [
-              { n: "MacBook Air (M5)", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" },
-              { n: "MacBook Pro (M5 Pro/Max)", u: "https://3c.yipee.cc/329743/" },
-              { n: "iPad Air (M4)", u: "https://3c.yipee.cc/329743/" }
+      { type: "hwlist", filterHint: "提示：选「近30天」看最新动态；选「⭐ 长期关注」看结构性重要信息（如联想 Qira、华为鸿蒙 PC+麒麟）；重要旧信息默认不被时间筛选隐藏。平板 / AI 智能硬件模块当前为框架占位（🚧），真实 2026 数据可随时补。",
+        modules: [
+          { id: "pc", name: "PC / 笔记本", icon: "💻",
+            items: [
+              { name: "华为 鸿蒙 PC + 麒麟 XE90 平台", brand: "华为", date: "2026-07-29", level: "long",
+                summary: "7/29 技术沟通会官宣 MateBook Pro S 与 MateBook Fold 二代，并发布自研 PC 芯片麒麟 XE90 / X90 Plus，形成「高能效/高性能/旗舰」三层芯片布局；鸿蒙电脑版打通软硬一体。属结构性重要信息，中长期仍值得回看。",
+                metrics: [
+                  { k: "麒麟 XE90 / X90 Plus", v: "自研 PC 芯片", d: "X90 Plus 高性能、XE90 高能效；XE90 对比 X90 单核 +23%、能效 +25%、NPU +40%", src: { n: "网易/机智猫", u: "https://www.163.com/dy/article/L317LSAB05118UEG.html" } },
+                  { k: "鸿蒙电脑版", v: "生态闭环", d: "折叠+手写笔+鸿蒙 AI 小艺，强化国产 PC 差异化路线", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260729A04C9A00?refer=cp_1009" } }
+                ],
+                src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260729A04C9A00?refer=cp_1009" } },
+              { name: "华为 MateBook Pro S", brand: "华为", date: "2026-08-05", level: "new",
+                summary: "全球最轻 14″ 金属本，798g；麒麟 XE90 首发，内置小艺。",
+                metrics: [ { k: "重量", v: "798g", d: "全球最轻 14″ 金属本；16/24/32GB，512GB/1TB；140W；五种配色", src: { n: "网易/机智猫", u: "https://www.163.com/dy/article/L317LSAB05118UEG.html" } } ],
+                src: { n: "网易/机智猫", u: "https://www.163.com/dy/article/L317LSAB05118UEG.html" } },
+              { name: "华为 MateBook Fold 非凡大师（二代）", brand: "华为", date: "2026-08-05", level: "new",
+                summary: "折叠 PC，8/5 全场景发布会；金色机身，首次支持手写笔；麒麟 X9 系旗舰芯片。",
+                metrics: [ { k: "形态", v: "折叠 PC", d: "24GB+512GB / 24GB+1TB / 32GB+2TB；鸿蒙电脑版；上代 23,999 元起", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260729A04C9A00?refer=cp_1009" } } ],
+                src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260729A04C9A00?refer=cp_1009" } },
+              { name: "华为 MateBook 14 鸿蒙版", brand: "华为", date: "2026-04-20", level: "new",
+                summary: "2.8K OLED 云晰柔光屏；鸿蒙 AI；21 小时续航。",
+                metrics: [ { k: "屏幕", v: "2.8K OLED", d: "云晰柔光屏；鸿蒙 AI；21h 续航", src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" } } ],
+                src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" } },
+              { name: "Apple M5 平台 + Apple Intelligence", brand: "Apple", date: "2026-03-04", level: "long",
+                summary: "2026 春季定义为「端侧 AI 普及元年」——M5 全系落地 + Apple Intelligence 让本地 AI 成默认能力；平台级迭代，中长期仍具参考性。",
+                metrics: [
+                  { k: "M5 芯片", v: "全系", d: "MacBook Air/Pro、iPad Air 同步适配；端侧 AI 任务本地化", src: { n: "Apple 新闻稿", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" } },
+                  { k: "Apple Intelligence", v: "默认能力", d: "本地 AI 成默认，形态创新保守（芯片+存储迭代）", src: { n: "Apple 新闻稿", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" } }
+                ],
+                src: { n: "Apple 新闻稿", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" } },
+              { name: "Apple MacBook Air (M5)", brand: "Apple", date: "2026-03-11", level: "new",
+                summary: "13″/15″，M5 芯片，512GB 起最高 4TB；N1 芯片 Wi-Fi 7 + 蓝牙 6；18h 续航。",
+                metrics: [ { k: "起售", v: "美 $1099", d: "3/11 发售；台 NT$35,900 起", src: { n: "Apple 新闻稿", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" } } ],
+                src: { n: "Apple 新闻稿", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" } },
+              { name: "Apple MacBook Pro (M5 Pro/Max)", brand: "Apple", date: "2026-03", level: "new",
+                summary: "14″/16″，M5 Pro/Max，24GB 起最高 48GB；Thunderbolt 5；SSD 提速 2×；20–22h 续航。",
+                metrics: [ { k: "芯片", v: "M5 Pro/Max", d: "24GB 起；Thunderbolt 5；20–22h 续航", src: { n: "yipee 整理", u: "https://3c.yipee.cc/329743/" } } ],
+                src: { n: "yipee 整理", u: "https://3c.yipee.cc/329743/" } },
+              { name: "小米 REDMI Book 14/16 2026", brand: "小米 / REDMI", date: "2026-04-17", level: "new",
+                summary: "酷睿 Ultra 5 125H，双风扇双热管 60W；80Wh；120Hz；国补后 4,674 起。",
+                metrics: [ { k: "起售", v: "¥5,499", d: "4/17 开售；14″ 2880×1800/1.49kg，16″ 2560×1600/1.86kg", src: { n: "IT之家", u: "https://tech.ifeng.com/c/8sOUmAZpqMO" } } ],
+                src: { n: "IT之家", u: "https://tech.ifeng.com/c/8sOUmAZpqMO" } },
+              { name: "小米 REDMI Book Pro 2026", brand: "小米 / REDMI", date: "2026-04", level: "new",
+                summary: "第三代酷睿 Ultra X7 358H（Intel 18A），180 TOPS AI 算力；LPDDR5X 9600；92Wh。",
+                metrics: [ { k: "AI 算力", v: "180 TOPS", d: "酷睿 Ultra X7 358H；¥6,999 起", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260422A052R600?refer=cp_1009" } } ],
+                src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260422A052R600?refer=cp_1009" } },
+              { name: "联想 Lenovo Qira 个人超级智能体", brand: "联想", date: "2026-01-07", level: "long",
+                summary: "CES 2026 发布个人超级智能体 Lenovo Qira，打通 PC/手机/平板跨设备；配卷轴屏概念机。属「新 AI 系统」类结构性信息——你举例的长期关注对象。",
+                metrics: [ { k: "Qira 智能体", v: "跨设备", d: "PC/手机/平板统一调度；ThinkPad Rollable XD 卷轴屏、Legion Pro Rollable 概念 AI PC", src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } } ],
+                src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } },
+              { name: "联想 ThinkPad X1 Carbon Aura 2026", brand: "联想", date: "2026", level: "new",
+                summary: "Ultra X7，2.8K 120Hz，内置 SIM 卡；<984g。",
+                metrics: [ { k: "重量", v: "<984g", d: "¥15,299 起（FIFA 版 ¥19,999）", src: { n: "联想商城", u: "https://thinkpad.lenovo.com.cn/index.html?sm" } } ],
+                src: { n: "联想商城", u: "https://thinkpad.lenovo.com.cn/index.html?sm" } },
+              { name: "联想 YOGA Air 14 Ultra", brand: "联想", date: "2026-05-19", level: "new",
+                summary: "2.8K POLED 1100nits 极致轻薄；975g。",
+                metrics: [ { k: "重量", v: "975g", d: "Ultra 7 258V/32G/1TB；5/19 开售", src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } } ],
+                src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } },
+              { name: "联想 拯救者 Y9000P 2026", brand: "联想", date: "2026-05-19", level: "new",
+                summary: "酷睿 Ultra 9 290HX Plus，面向重度游戏/创作；同场小新 Air 14 2026。",
+                metrics: [ { k: "定位", v: "高性能", d: "酷睿 Ultra 9 290HX Plus", src: { n: "爱企查", u: "https://aiqicha.baidu.com/details/rankList?query=42a73e8a5d01b4aa70d2680260d011dd&type=20" } } ],
+                src: { n: "爱企查", u: "https://aiqicha.baidu.com/details/rankList?query=42a73e8a5d01b4aa70d2680260d011dd&type=20" } },
+              { name: "荣耀 WIN 游戏本 H9", brand: "荣耀", date: "2026-04-23", level: "new",
+                summary: "自研「2+4」轴流风扇，至 270W 性能释放；联名款 ¥14,699。",
+                metrics: [ { k: "性能释放", v: "270W", d: "酷睿 Ultra 9 290HX Plus + RTX 5070 Ti；300Hz 屏、AI 离焦护眼", src: { n: "荣耀官网", u: "https://www.honor.com/cn/news/honor-win-h9-h7-launch" } } ],
+                src: { n: "荣耀官网", u: "https://www.honor.com/cn/news/honor-win-h9-h7-launch" } },
+              { name: "机械革命 翼龙15 Air 2026", brand: "机械革命", date: "2026-07-10", level: "new",
+                summary: "1.5kg 轻薄电竞；AI 9 HX470 + RTX 5060，双烤 170W。",
+                metrics: [ { k: "重量", v: "1.5kg", d: "7/10 预约；15.3″ 2.5K 240Hz OLED；首发 ¥12,999", src: { n: "17173", u: "https://news.17173.com/content/07102026/140456776.shtml" } } ],
+                src: { n: "17173", u: "https://news.17173.com/content/07102026/140456776.shtml" } },
+              { name: "雷神 ZERO Air 16 小轻龙", brand: "雷神", date: "2026-08", level: "new",
+                summary: "碳纤维 ACD 壳，1.64kg 实现 160W 双满功耗。",
+                metrics: [ { k: "重量", v: "1.64kg", d: "酷睿 Ultra 7 356H + RTX 5070；2.5K 240Hz；赛车版 8 月上市", src: { n: "游民星空", u: "https://wap.gamersky.com/news/Content-2172646.html" } } ],
+                src: { n: "游民星空", u: "https://wap.gamersky.com/news/Content-2172646.html" } },
+              { name: "微星 神影 Crosshair 16 Max HX", brand: "微星", date: "2026-04-16", level: "new",
+                summary: "轻薄机身 + 200W 高性能释放，配 OLED 电竞屏与 RTX 50 系。",
+                metrics: [ { k: "性能释放", v: "200W", d: "4/16 发布；轻薄机身 + 高素质 OLED 电竞屏", src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" } } ],
+                src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" } },
+              { name: "戴尔 Alienware 星舰 16X 2026", brand: "戴尔", date: "2026-04-20", level: "new",
+                summary: "Ultra 7 270HX Plus ¥17,499 / Ultra 9 290HX Plus ¥19,499，可享国补。",
+                metrics: [ { k: "起售", v: "¥17,499", d: "4/20 上市；酷睿 Ultra 200HX Plus", src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" } } ],
+                src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" } }
             ] },
-          { cat: "国内头部 · 华为 / 小米 / 联想 / 荣耀", desc: "自研芯片、鸿蒙生态、跨端智联与超轻本全面发力。",
-            examples: [
-              { n: "华为 MateBook Fold 二代", u: "https://new.qq.com/rain/a/20260729A04C9A00?refer=cp_1009" },
-              { n: "华为 MateBook Pro S (798g)", u: "https://www.163.com/dy/article/L317LSAB05118UEG.html" },
-              { n: "小米 REDMI Book 2026", u: "https://tech.ifeng.com/c/8sOUmAZpqMO" },
-              { n: "联想 ThinkPad X1 Carbon 2026", u: "https://thinkpad.lenovo.com.cn/index.html?sm" },
-              { n: "荣耀 WIN 游戏本 H9", u: "https://www.honor.com/cn/news/honor-win-h9-h7-launch" }
+          { id: "tablet", name: "平板", icon: "📱", note: "🚧 框架占位：平板真实 2026 数据待补充，以下为已知系列结构，告诉我即可填充来源。",
+            items: [
+              { name: "iPad 系列（Apple）", brand: "Apple", date: "2026-03", level: "new", placeholder: true,
+                summary: "iPad Air (M4) / iPad 12 (A19) 等，M4/M5 芯片 + Apple Intelligence 端侧 AI。真实参数与 2026 新品待补充。" },
+              { name: "MatePad 系列（华为）", brand: "华为", date: "2026", level: "new", placeholder: true,
+                summary: "MatePad Edge X90（14.2″ 鸿蒙二合一 ¥5,999）、MatePad Air 12（¥2,799）、MatePad 11.5 2026（¥1,999）、MatePad Pro 12.2（¥4,499）等，鸿蒙生态。价格已部分已知，待系统补充来源。" },
+              { name: "REDMI Pad / K Pad（小米）", brand: "小米", date: "2026-04", level: "new", placeholder: true,
+                summary: "REDMI K Pad 2：天玑 9500、8.8″ 3K LCD 165Hz、9100mAh+67W（¥3,399 起）。更多平板型号待补充。" },
+              { name: "荣耀平板 MagicPad 3 Pro 12.3", brand: "荣耀", date: "2026-04", level: "new", placeholder: true,
+                summary: "4/23 随 WIN 游戏本一同发布。真实参数待补充。" }
             ] },
-          { cat: "国产游戏本 / 高性能本", desc: "机械革命、雷神、微星、戴尔 Alienware 在散热与轻薄工艺上贴身肉搏。",
-            examples: [
-              { n: "机械革命 翼龙15 Air 2026", u: "https://news.17173.com/content/07102026/140456776.shtml" },
-              { n: "雷神 ZERO Air 16 小轻龙", u: "https://wap.gamersky.com/news/Content-2172646.html" },
-              { n: "微星 神影 Crosshair 16 Max HX", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" },
-              { n: "戴尔 Alienware 星舰16X 2026", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" }
+          { id: "aihw", name: "AI 智能硬件", icon: "🤖", note: "🚧 框架占位：以下四类为对产业有益的 AI 智能硬件结构，真实 2026 新品与来源待补充（告诉我即可填充）。",
+            subs: [
+              { cat: "智能音频（AI 耳机 / 音箱）", items: [
+                { name: "AI 耳机（字节 Ola Friend / 小米 AI 音频 / 韶音等）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "实时翻译 / 语音助手 / 降噪等 AI 功能耳机。真实 2026 新品与来源待补充。" },
+                { name: "AI 智能音箱", brand: "—", date: "2026", level: "new", placeholder: true, summary: "带端侧大模型的智能音箱。待补充。" }
+              ] },
+              { cat: "AI 拍摄配件（云台 / 相机）", items: [
+                { name: "AI 云台（大疆 / 影石 / 智云等）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "自动跟拍 / AI 构图 / 手势控制的智能云台与运动相机。待补充。" },
+                { name: "AI 摄像头 / 会议相机", brand: "—", date: "2026", level: "new", placeholder: true, summary: "AI 追踪 / 美颜 / 自动取景的摄像头。待补充。" }
+              ] },
+              { cat: "AI 输入设备（键盘 / 鼠标）", items: [
+                { name: "AI 键盘（科大讯飞 / 双飞燕等）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "带语音转写 / AI 写作助手的智能键盘。待补充。" },
+                { name: "AI 鼠标 / 手写板", brand: "—", date: "2026", level: "new", placeholder: true, summary: "AI 语音鼠标 / 智能手写板。待补充。" }
+              ] },
+              { cat: "AI 穿戴与其他（眼镜 / 家居）", items: [
+                { name: "AI 眼镜（小米 AI 眼镜 / Meta Ray-Ban / 闪极拍拍镜）", brand: "—", date: "2026", level: "new", placeholder: true, summary: "拍照 / 实时翻译 / 语音助手的 AI 眼镜。待补充。" },
+                { name: "AI 手表 / AI 家居", brand: "—", date: "2026", level: "new", placeholder: true, summary: "健康 AI 手表、带端侧模型的智能家居中枢。待补充。" }
+              ] }
             ] }
-        ] },
-
-      { type: "company", heading: "二、国际品牌 · Apple",
-        companies: [
-          { name: "Apple", tag: "自研 SoC + 端侧 AI 普及", src: { n: "Apple 新闻稿", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" },
-            summary: "2026 春季新品周（3 月 4 日–11 日）全系落地 M5 芯片，笔电、平板同步适配 Apple Intelligence，主打轻薄、续航与本地 AI 任务。",
-            metrics: [
-              { k: "MacBook Air (M5)", v: "13″/15″", d: "M5 芯片，512GB 起最高 4TB；N1 芯片 Wi-Fi 7 + 蓝牙 6；18 小时续航；3 月 11 日发售，美 $1099 起 / 台 NT$35,900 起", src: { n: "Apple 新闻稿", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" } },
-              { k: "MacBook Pro (M5 Pro/Max)", v: "14″/16″", d: "M5 Pro/Max，24GB 起最高 48GB；Thunderbolt 5；SSD 提速 2 倍；20–22 小时续航", src: { n: "yipee 整理", u: "https://3c.yipee.cc/329743/" } },
-              { k: "iPad Air (M4)", v: "11″/13″", d: "M4（8 核 CPU / 9 核 GPU / 16 核 NPU），12GB 统一内存，Wi-Fi 7 / 蓝牙 6，蜂窝版 C1X 基带；台 NT$19,900 起", src: { n: "yipee 整理", u: "https://3c.yipee.cc/329743/" } },
-              { k: "iPad 12 (A19)", v: "入门平板", d: "A19 芯片，8GB 内存，补齐端侧 AI 能力", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260228A04WZF00?refer=cp_1009" } }
-            ],
-            insights: [
-              { html: "<b>判断：</b>苹果把 2026 定义为「端侧 AI 普及元年」——M5 全系 + Apple Intelligence 让本地 AI 成为默认能力，但形态创新保守（主要是芯片与存储迭代）。", src: { n: "Apple 新闻稿", u: "https://www.apple.com.cn/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5" } }
-            ] }
-        ] },
-
-      { type: "company", heading: "三、国内头部 · 华为",
-        companies: [
-          { name: "华为 Huawei", tag: "鸿蒙 PC + 自研麒麟", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260729A04C9A00?refer=cp_1009" },
-            summary: "7 月 29 日技术沟通会官宣 MateBook Pro S 与 MateBook Fold 二代，并发布两款自研 PC 芯片麒麟 XE90 / X90 Plus，形成「高能效 / 高性能 / 旗舰」三层芯片布局。",
-            metrics: [
-              { k: "MateBook Fold 非凡大师 (二代)", v: "折叠 PC", d: "8 月 5 日全场景发布会；金色机身，首次支持手写笔；麒麟 X9 系旗舰芯片；24GB+512GB / 24GB+1TB / 32GB+2TB；鸿蒙电脑版；上代 23,999 元起", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260729A04C9A00?refer=cp_1009" } },
-              { k: "MateBook Pro S", v: "798g", d: "全球最轻 14″ 金属本；麒麟 XE90 首发（8 月 5 日）；16/24/32GB，512GB/1TB；140W；五种配色；内置小艺", src: { n: "网易/机智猫", u: "https://www.163.com/dy/article/L317LSAB05118UEG.html" } },
-              { k: "麒麟 XE90 / X90 Plus", v: "自研 PC 芯片", d: "X90 Plus 高性能、XE90 高能效；XE90 对比 X90 单核 +23%、能效比 +25%、NPU +40%", src: { n: "网易/机智猫", u: "https://www.163.com/dy/article/L317LSAB05118UEG.html" } },
-              { k: "MateBook 14 鸿蒙版", v: "轻薄本", d: "4 月 20 日发布；2.8K OLED 云晰柔光屏；鸿蒙 AI；21 小时续航", src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" } },
-              { k: "MatePad 平板系列", v: "¥1,999 起", d: "MatePad Edge X90（14.2″ 鸿蒙二合一 ¥5,999）、MatePad Air 12（¥2,799）、MatePad 11.5 2026（¥1,999）、MatePad Pro 12.2（¥4,499）等", src: { n: "华为商城 vmall", u: "https://www.vmall.com?cid=119884/" } }
-            ],
-            insights: [
-              { html: "<b>判断：</b>华为走「鸿蒙 PC + 自研麒麟」软硬一体闭环，折叠 + 手写笔拓展创作场景；三层芯片（XE90 高能效 / X90 Plus 高性能 / X9 旗舰）强化生态壁垒，是国产 PC 最具差异化的路线。", src: { n: "网易/机智猫", u: "https://www.163.com/dy/article/L317LSAB05118UEG.html" } }
-            ] }
-        ] },
-
-      { type: "company", heading: "四、国内头部 · 小米",
-        companies: [
-          { name: "小米 / REDMI", tag: "性价比 + 人车家全生态", src: { n: "IT之家", u: "https://tech.ifeng.com/c/8sOUmAZpqMO" },
-            summary: "2026 年以 REDMI Book 系列为主力，全系接入人车家全生态，AI 算力依赖 Intel NPU（最高 180 TOPS），平板以 REDMI K Pad 2 补位。",
-            metrics: [
-              { k: "REDMI Book 14/16 2026", v: "¥5,499 起", d: "4 月 17 日开售；酷睿 Ultra 5 125H，双风扇双热管 60W；80Wh；120Hz；14″ 2880×1800/1.49kg，16″ 2560×1600/1.86kg；国补后 4,674 起", src: { n: "IT之家", u: "https://tech.ifeng.com/c/8sOUmAZpqMO" } },
-              { k: "REDMI Book Pro 2026", v: "¥6,999 起", d: "第三代酷睿 Ultra X7 358H（Intel 18A），180 TOPS AI 算力；LPDDR5X 9600；92Wh；80W 性能释放", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260422A052R600?refer=cp_1009" } },
-              { k: "REDMI K Pad 2 (平板)", v: "¥3,399 起", d: "天玑 9500；8.8″ 3K LCD 165Hz；9100mAh + 67W", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260422A052R600?refer=cp_1009" } }
-            ],
-            insights: [
-              { html: "<b>判断：</b>小米延续性价比打法，靠跨端智联（融合设备中心、通信共享、键鼠共享）提升黏性；AI 算力取 Intel NPU 而非自研，短期成本可控、长期仍受限于平台。", src: { n: "腾讯新闻", u: "https://new.qq.com/rain/a/20260422A052R600?refer=cp_1009" } }
-            ] }
-        ] },
-
-      { type: "company", heading: "五、国内头部 · 联想",
-        companies: [
-          { name: "联想 Lenovo", tag: "商务轻薄 + 形态创新 + Qira 智能体", src: { n: "联想商城", u: "https://thinkpad.lenovo.com.cn/index.html?sm" },
-            summary: "双线推进：商务 ThinkPad 冲 <1kg 轻薄 + 内置 SIM；消费 YOGA / 拯救者冲性能与形态创新；CES 2026 发布个人超级智能体 Lenovo Qira 与卷轴屏概念机。",
-            metrics: [
-              { k: "ThinkPad X1 Carbon Aura 2026", v: "<984g", d: "Ultra X7，2.8K 120Hz，内置 SIM 卡；¥15,299 起（FIFA 版 ¥19,999）", src: { n: "联想商城", u: "https://thinkpad.lenovo.com.cn/index.html?sm" } },
-              { k: "ThinkPad X9-15 Aura", v: "¥15,999", d: "Ultra 7 258V / 32G / 1TB / 2.8K 触控 120Hz", src: { n: "联想商城", u: "https://thinkpad.lenovo.com.cn/index.html?sm" } },
-              { k: "ThinkBook 14+/16+ 2026", v: "¥11,999", d: "酷睿 Ultra X7 358H，3K/3.2K 120/165Hz", src: { n: "联想商城", u: "https://thinkpad.lenovo.com.cn/index.html?sm" } },
-              { k: "YOGA Air 14 Ultra", v: "<1kg (975g)", d: "2.8K POLED 1100nits 极致轻薄；YOGA Air 14 Aura 5 月 19 日开售（Ultra 7 258V/32G/1TB）", src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } },
-              { k: "拯救者 Y9000P 2026", v: "5/19 发布", d: "酷睿 Ultra 9 290HX Plus，面向重度游戏/创作；同场小新 Air 14 2026 主打极致轻薄", src: { n: "爱企查", u: "https://aiqicha.baidu.com/details/rankList?query=42a73e8a5d01b4aa70d2680260d011dd&type=20" } },
-              { k: "CES 2026 概念机", v: "Qira 智能体", d: "个人超级智能体 Lenovo Qira；ThinkPad Rollable XD 卷轴屏、Legion Pro Rollable 概念 AI PC", src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } }
-            ],
-            insights: [
-              { html: "<b>判断：</b>联想是「生态最广」的玩家——Qira 打通 PC / 手机 / 平板跨设备，卷轴屏等概念机探索形态；但自研芯片依赖 Intel/AMD/NVIDIA，软硬一体深度弱于苹果与华为。", src: { n: "联想 CES 社区", u: "https://mclub.lenovo.com.cn/thread-9454008-1-1.html" } }
-            ] }
-        ] },
-
-      { type: "company", heading: "六、其他国产硬件厂（游戏本 / 高性能本）",
-        companies: [
-          { name: "荣耀 Honor", tag: "游戏本 + 轻薄本 + 平板", src: { n: "荣耀官网", u: "https://www.honor.com/cn/news/honor-win-h9-h7-launch" },
-            summary: "4 月 23 日成都发布 WIN 游戏本 H9/H7 与 MagicBook Pro、MagicPad 3 Pro 12.3；WIN H9 用自研「2+4」轴流风扇，至 270W 性能释放。",
-            metrics: [
-              { k: "荣耀 WIN 游戏本 H9", v: "270W", d: "酷睿 Ultra 9 290HX Plus + RTX 5070 Ti；联名款 ¥14,699（国补后 ¥13,099）；300Hz 屏、AI 离焦护眼", src: { n: "荣耀官网", u: "https://www.honor.com/cn/news/honor-win-h9-h7-launch" } }
-            ] },
-          { name: "机械革命 MECHREVO", tag: "轻薄游戏本", src: { n: "17173", u: "https://news.17173.com/content/07102026/140456776.shtml" },
-            summary: "翼龙 15 Air 2026 主打 1.5kg 轻薄电竞；耀世 15/16 Air 用镁合金机身（BW2026 亮相）。",
-            metrics: [
-              { k: "翼龙 15 Air 2026", v: "1.5kg", d: "7 月 10 日预约；AI 9 HX470 + RTX 5060，双烤 170W；15.3″ 2.5K 240Hz OLED；32GB+1TB；首发 ¥12,999", src: { n: "17173", u: "https://news.17173.com/content/07102026/140456776.shtml" } }
-            ] },
-          { name: "雷神 Thunderobot", tag: "轻竞游戏本", src: { n: "游民星空", u: "https://wap.gamersky.com/news/Content-2172646.html" },
-            summary: "BW2026 小轻龙系列把碳纤维用于 ACD 壳，1.64kg 实现 160W 双满功耗。",
-            metrics: [
-              { k: "ZERO Air 16 小轻龙", v: "1.64kg", d: "碳纤维 ACD 壳；酷睿 Ultra 7 356H + RTX 5070；2.5K 240Hz 100% DCI-P3；赛车版 8 月上市", src: { n: "游民星空", u: "https://wap.gamersky.com/news/Content-2172646.html" } }
-            ] },
-          { name: "微星 MSI", tag: "高性能游戏本", src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" },
-            summary: "神影 Crosshair 16 Max HX 主打轻薄机身 + 200W 高性能释放，配 OLED 电竞屏与 RTX 50 系。",
-            metrics: [
-              { k: "神影 Crosshair 16 Max HX", v: "200W", d: "4 月 16 日发布；轻薄机身设计，升级高素质 OLED 电竞屏，搭配 RTX 50 系独显", src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" } }
-            ] },
-          { name: "戴尔 Alienware", tag: "高端电竞", src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" },
-            summary: "星舰 16X 2026 游戏本上市，搭载酷睿 Ultra 200HX Plus，主打高端电竞体验。",
-            metrics: [
-              { k: "Alienware 星舰 16X 2026", v: "¥17,499 起", d: "4 月 20 日上市；Ultra 7 270HX Plus ¥17,499 / Ultra 9 290HX Plus ¥19,499，可享国补", src: { n: "PChome", u: "https://article.pchome.net/n308/z60-p2-l1/53.html" } }
-            ] }
-        ] },
-
+        ]
+      },
       { type: "compare", chart: {
         title: "轻薄化军备竞赛：2026 最轻 14″ 级本（机身重量，对数刻度）",
         items: [

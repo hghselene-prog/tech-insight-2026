@@ -180,6 +180,7 @@
       case 'taxonomy':return taxonomyHTML(b.heading, b.items);
       case 'pages':   return pagesHTML(b.heading, b.pages);
       case 'compare': return compareHTML(b.chart);
+      case 'hwlist':  return hwlistHTML(b);
       case 'tabs':    return renderTabs(b);
       default:        return '';
     }
@@ -197,6 +198,125 @@
       h += '</div>';
     });
     return h;
+  }
+
+  /* ---------- 硬件三大模块 + 时间/级别筛选 ---------- */
+
+  function hwlistHTML(block) {
+    var ranges = [['all', '全部'], ['7', '近7天'], ['30', '近30天'], ['90', '近一季度'], ['old', '更早']];
+    var levels = [['all', '全部'], ['long', '⭐ 长期关注'], ['new', '🆕 新品速览']];
+    var h = '<div class="hw-filter" id="hwFilter">';
+    h += '<div class="hw-fg"><span class="hw-fl">时间</span>';
+    ranges.forEach(function (r) {
+      h += '<button class="hw-btn' + (r[0] === 'all' ? ' active' : '') + '" data-range="' + r[0] + '">' + r[1] + '</button>';
+    });
+    h += '</div>';
+    h += '<div class="hw-fg"><span class="hw-fl">关注级别</span>';
+    levels.forEach(function (l) {
+      h += '<button class="hw-btn' + (l[0] === 'all' ? ' active' : '') + '" data-level="' + l[0] + '">' + l[1] + '</button>';
+    });
+    h += '</div>';
+    if (block.filterHint) h += '<div class="hw-fhint">' + block.filterHint + '</div>';
+    h += '</div>';
+
+    (block.modules || []).forEach(function (m) {
+      h += '<section class="hw-mod" data-mod="' + m.id + '">';
+      h += '<h3 class="hw-mod-h">' + (m.icon || '') + ' ' + m.name + '</h3>';
+      if (m.note) h += '<div class="hw-mod-note">' + m.note + '</div>';
+      if (m.subs) {
+        m.subs.forEach(function (s) {
+          h += '<div class="hw-sub" data-sub="' + s.cat + '"><div class="hw-sub-h">' + s.cat + '</div>';
+          h += renderHWItems(s.items);
+          h += '</div>';
+        });
+      } else {
+        h += renderHWItems(m.items);
+      }
+      h += '</section>';
+    });
+    return h;
+  }
+
+  function renderHWItems(items) {
+    var h = '<div class="hw-items">';
+    (items || []).forEach(function (it) {
+      var lvl = it.level === 'long' ? 'long' : 'new';
+      var lvlTxt = lvl === 'long' ? '⭐ 长期关注' : '🆕 新品速览';
+      var d = it.date || '';
+      h += '<article class="hw-item' + (it.placeholder ? ' ph' : '') + '" data-date="' + d + '" data-level="' + lvl + '">';
+      h += '<div class="hw-ihead"><span class="hw-iname">' + it.name + '</span>';
+      h += '<span class="hw-badges"><span class="hw-date">' + (d || '日期待补') + '</span>' +
+        '<span class="hw-lvl ' + lvl + '">' + lvlTxt + '</span></span></div>';
+      if (it.brand) h += '<div class="hw-brand">' + it.brand + '</div>';
+      h += '<div class="hw-sum">' + it.summary + (it.placeholder ? ' <span class="hw-phtag">🚧 数据待补充</span>' : '') + '</div>';
+      if (it.metrics && it.metrics.length) {
+        h += '<div class="hw-metrics">';
+        it.metrics.forEach(function (mt) {
+          h += '<div class="hw-metric"><span class="hw-mk">' + mt.k + '</span><span class="hw-mv">' + mt.v + '</span>' +
+            (mt.d ? '<span class="hw-md">' + mt.d + '</span>' : '') + (mt.src ? cite(mt.src) : '') + '</div>';
+        });
+        h += '</div>';
+      }
+      if (it.src) h += '<div class="co-src">📄 官方原始：' + cite(it.src) + '</div>';
+      (it.insights || []).forEach(function (ins) {
+        h += '<div class="insight' + (ins.type ? (' ' + ins.type) : '') + '">' + ins.html + ' ' + cite(ins.src) + '</div>';
+      });
+      h += '</article>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  function setupHWFilter() {
+    var bar = document.getElementById('hwFilter');
+    if (!bar) return;
+    var items = document.querySelectorAll('.hw-item');
+    function apply() {
+      var rb = bar.querySelector('.hw-btn[data-range].active');
+      var lb = bar.querySelector('.hw-btn[data-level].active');
+      var range = rb ? rb.getAttribute('data-range') : 'all';
+      var level = lb ? lb.getAttribute('data-level') : 'all';
+      var now = new Date();
+      items.forEach(function (el) {
+        var d = el.getAttribute('data-date');
+        var lvl = el.getAttribute('data-level');
+        var dd = (d && d.length >= 7) ? (d.length === 7 ? d + '-15' : d) : null;
+        var dateOK = true;
+        if (range !== 'all' && dd) {
+          var diff = (now - new Date(dd)) / 86400000;
+          if (range === '7') dateOK = diff <= 7;
+          else if (range === '30') dateOK = diff <= 30;
+          else if (range === '90') dateOK = diff <= 90;
+          else if (range === 'old') dateOK = diff > 90;
+        } else if (range !== 'all' && !dd) {
+          dateOK = (range === 'old');
+        }
+        var show;
+        if (level === 'long') show = (lvl === 'long');
+        else if (level === 'new') show = (lvl === 'new') && (range === 'all' || dateOK);
+        else show = dateOK || (lvl === 'long');
+        el.style.display = show ? '' : 'none';
+      });
+      document.querySelectorAll('.hw-mod').forEach(function (mod) {
+        var visible = 0;
+        mod.querySelectorAll('.hw-item').forEach(function (el) { if (el.style.display !== 'none') visible++; });
+        mod.style.display = visible ? '' : 'none';
+      });
+      document.querySelectorAll('.hw-sub').forEach(function (sub) {
+        var visible = 0;
+        sub.querySelectorAll('.hw-item').forEach(function (el) { if (el.style.display !== 'none') visible++; });
+        sub.style.display = visible ? '' : 'none';
+      });
+    }
+    bar.querySelectorAll('.hw-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var sibs = btn.parentElement.querySelectorAll('.hw-btn');
+        sibs.forEach(function (s) { s.classList.remove('active'); });
+        btn.classList.add('active');
+        apply();
+      });
+    });
+    apply();
   }
 
   /* ---------- 页面渲染 ---------- */
@@ -267,6 +387,7 @@
 
   renderNav();
   render(PAGE_ID);
+  setupHWFilter();
 
   var tabsEl = document.getElementById('tabs');
   if (tabsEl) {
